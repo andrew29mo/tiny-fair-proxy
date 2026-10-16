@@ -1,0 +1,150 @@
+{
+  "visibility": "PUBLIC",
+  "license": "MIT",
+  "security_and_analysis": {
+    "secret_scanning": {
+      "status": "enabled"
+    },
+    "secret_scanning_push_protection": {
+      "status": "enabled"
+    },
+    "dependabot_security_updates": {
+      "status": "enabled"
+    },
+    "secret_scanning_non_provider_patterns": {
+      "status": "disabled"
+    },
+    "secret_scanning_validity_checks": {
+      "status": "disabled"
+    }
+  },
+  "dependabot_alerts_enabled": true,
+  "automated_security_fixes": {
+    "enabled": true,
+    "paused": false
+  },
+  "actions": {
+    "enabled": true,
+    "allowed_actions": "selected",
+    "selected_actions_url": "https://api.github.com/repositories/1421551866/actions/permissions/selected-actions",
+    "sha_pinning_required": true
+  },
+  "selected_actions": {
+    "github_owned_allowed": false,
+    "patterns_allowed": [
+      "actions/checkout@*",
+      "actions/setup-python@*"
+    ],
+    "verified_allowed": false
+  },
+  "workflow": {
+    "default_workflow_permissions": "read",
+    "can_approve_pull_request_reviews": false
+  },
+  "fork_pr": {
+    "approval_policy": "all_external_contributors"
+  },
+  "rulesets": [
+    {
+      "id": 25217375,
+      "name": "Main CI with solo maintainer bypass",
+      "target": "branch",
+      "source_type": "Repository",
+      "source": "andrew29mo/tiny-fair-proxy",
+      "enforcement": "active",
+      "conditions": {
+        "ref_name": {
+          "exclude": [],
+          "include": [
+            "refs/heads/main"
+          ]
+        }
+      },
+      "rules": [
+        {
+          "type": "required_status_checks",
+          "parameters": {
+            "strict_required_status_checks_policy": true,
+            "do_not_enforce_on_create": false,
+            "required_status_checks": [
+              {
+                "context": "test (ubuntu-latest)",
+                "integration_id": 15368
+              },
+              {
+                "context": "test (macos-latest)",
+                "integration_id": 15368
+              }
+            ]
+          }
+        }
+      ],
+      "node_id": "RRS_lACqUmVwb3NpdG9yec5Uuyj6zgGAyV8",
+      "created_at": "2026-10-16T12:19:47.195+08:00",
+      "updated_at": "2026-10-16T12:19:47.252+08:00",
+      "bypass_actors": [
+        {
+          "actor_id": 5,
+          "actor_type": "RepositoryRole",
+          "bypass_mode": "always"
+        }
+      ],
+      "current_user_can_bypass": "always",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/andrew29mo/tiny-fair-proxy/rulesets/25217375"
+        },
+        "html": {
+          "href": "https://github.com/andrew29mo/tiny-fair-proxy/rules/25217375"
+        }
+      }
+    },
+    {
+      "id": 25217374,
+      "name": "Protect main history",
+      "target": "branch",
+      "source_type": "Repository",
+      "source": "andrew29mo/tiny-fair-proxy",
+      "enforcement": "active",
+      "conditions": {
+        "ref_name": {
+          "exclude": [],
+          "include": [
+            "refs/heads/main"
+          ]
+        }
+      },
+      "rules": [
+        {
+          "type": "deletion"
+        },
+        {
+          "type": "non_fast_forward"
+        }
+      ],
+      "node_id": "RRS_lACqUmVwb3NpdG9yec5Uuyj6zgGAyV4",
+      "created_at": "2026-10-16T12:19:46.585+08:00",
+      "updated_at": "2026-10-16T12:19:46.606+08:00",
+      "bypass_actors": [],
+      "current_user_can_bypass": "never",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/andrew29mo/tiny-fair-proxy/rulesets/25217374"
+        },
+        "html": {
+          "href": "https://github.com/andrew29mo/tiny-fair-proxy/rules/25217374"
+        }
+      }
+    }
+  ],
+  "collaborators": [
+    "andrew29mo"
+  ],
+  "self_hosted_runners": 0,
+  "deploy_keys": 0,
+  "webhooks": 0,
+  "open_secret_alerts_first_page": 0,
+  "open_dependabot_alerts_first_page": 0,
+  "alert_query_limit": 100,
+  "optional_scan_settings": "Non-provider patterns and validity checks remain disabled after enable requests; no coverage claimed."
+}

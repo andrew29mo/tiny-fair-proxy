@@ -1,5 +1,12 @@
 # MIT adoption — 2026-10-16
 
+Historical adoption record for commit `e8f9852`, when the repository was Private.
+The later [publication record](../publication-20261016/README.md) supersedes its
+visibility status. The original receipt and observations remain unchanged;
+README/notice hashes in that receipt describe the adoption snapshot, not later
+publication wording. Its implementation, test and measurement bindings still
+match the unchanged runtime sources.
+
 Baseline: `7fe360973de79a0bd31806c69e58184269695c18`, initially clean.
 The owner explicitly selected MIT. Original project code/documentation now use
 the root `LICENSE`: Copyright (c) 2026 Andrew Yuan. Cargo declares `license = "MIT"`

@@ -114,15 +114,18 @@ The [original MVP](reviews/mvp-20261016/README.md) and
 [scheduling-review records](reviews/scheduling-review-20261016/README.md) are retained as historical evidence.
 The [pre-publication review](reviews/prepublication-20261016/README.md) predates MIT adoption.
 
-The [first hosted CI run](https://github.com/andrew29mo/tiny-fair-proxy/actions/runs/38844282524) was blocked before any steps
+While the repository was Private, the [first hosted CI run](https://github.com/andrew29mo/tiny-fair-proxy/actions/runs/38844282524) was blocked before any steps
 by GitHub account billing/spending restrictions. Neither hosted job executed;
 local validation above is not a claim of hosted CI success.
+For post-publication execution, see the [current hosted workflow runs](https://github.com/andrew29mo/tiny-fair-proxy/actions/workflows/ci.yml).
 
 ## Status and license
 
-Private MVP, licensed under the [MIT License](LICENSE).
+Public experimental MVP, licensed under the [MIT License](LICENSE).
 Third-party dependencies retain their own terms; see
 [third-party notices](THIRD_PARTY_NOTICES.md), [license texts](THIRD_PARTY_LICENSES.txt)
 and [security scope](SECURITY.md). Licensing does not change repository visibility.
 The [MIT adoption record](reviews/mit-adoption-20261016/README.md) supersedes
 the license status recorded in earlier reviews.
+The [publication record](reviews/publication-20261016/README.md) documents the
+public release, retained platform evidence and repository security settings.

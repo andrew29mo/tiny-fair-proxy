@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "reviewed_baseline": "e8f9852156268dd4b18ee60cb9119524c06184cb",
+  "agent_review": {
+    "independent_read_only_passes": 2,
+    "confirmed_release_blockers": 0,
+    "scopes": [
+      "Implementation/tests/report/provenance",
+      "Licenses/history/workflow/file hygiene"
+    ],
+    "baseline_history_commits": 5,
+    "baseline_history_blobs": 114,
+    "baseline_tracked_files": 80,
+    "scope_limit": "Heuristic review; no exhaustive correctness/security or legal certification"
+  },
+  "source_files": {
+    "Cargo.lock": "a578d9a57695a8dd5629c7b6d67a9ae7a6ffe8559e2a1796914a9f4b6b5c4309",
+    "Cargo.toml": "4404570dc12667394cb5bad4c83da9128e0fce507ceac860a58fac63054d0c53",
+    "build.rs": "857e7750a306e2ce78a6ea3921bb9cfe7dcd8230fa31475f872526cf48f3742c",
+    "requirements-dev.txt": "b6c8d86768d07e1dae4fb734c2e93997445a318d43290b307bfc1c800a0b1e52",
+    "src/main.rs": "427a421686623e019ea5f7b50e7ca63a73c7b522047bb5d74bd08c38d7969a64",
+    "tests/support.py": "ffb89aada3e1ad43bad8f84255da18f25a1d642eddb0a8e06061a7fc7dc31afd",
+    "tests/test_fairness.py": "9d67c334da0fa543f5f73a940b041eb190e7698412ae38dcbf83458e5acdfb17",
+    "tests/test_proxy.py": "55f53d88a9d367acf9a3241b6a2edafdff2cc28a1bed6c9897e84b2455fa4330",
+    "tests/test_report.py": "cacccefd2a7a356bc91a0ea91226696eea39f5385d522eea2ea1d01ca1e8b944",
+    "tests/test_review_regressions.py": "7d2eb9a7c10086a3f174109771a0a3ed52fb3391b57bffc893b5ce9b4517809d",
+    "tools/benchmark.py": "69f875cf57e2edf16f8dbf811a4a85bd2dd07f74e92a133e5061b5b6b3647342",
+    "tools/check_report.py": "7eb9954d34e44e6c79a27c20ccde3a1ca32c66fd784acb449345dc696b7a9c99",
+    "tools/findings.py": "90c618adbfcb65857a472a32e434fa24ce41dd8b6ba64d7c8e843a3bb8a0862a",
+    "tools/mutation_check.py": "fead8e9137e7591762824fc4e00376b0df3440c1b3a909d6a08884707e1f5515",
+    "tools/publication_check.py": "65b2afcc28ebf512e77654deb9900f8ec0c69cc2ba53effb735136bfb3b35a28"
+  },
+  "current_docs_sha256": {
+    "README.md": "bb7a7da6acb117af8551e95e6a0a360580c679ee31621643c1bb06be68d1cf11",
+    "LICENSE": "0a5f48c5847660a83b6372cf47ef20c88bc20a0ae051dcc623707d081d8ad504",
+    "THIRD_PARTY_NOTICES.md": "c58c76255bf9da1dacd3cb3f06517d091fd016251a30cdf31a808aeb97508b19",
+    "THIRD_PARTY_LICENSES.txt": "436c2e6ee46a88dc5d6523122dc65013fa0910aca6c7565c86821755d5e2925f",
+    "SECURITY.md": "c05ee8882b71e4593d9768efd1ec8ced69a7a22b00d17ca48ad113d3804edff8"
+  },
+  "native_rerun": {
+    "status": "passed",
+    "rust_unit_tests": 4,
+    "python_test_methods": 33,
+    "log_sha256": "ad5185d17514d35cdfcf4c4149926415280645178d1bbf8c9565ad8e1ac707fe",
+    "original_log_sha256": "ad5185d17514d35cdfcf4c4149926415280645178d1bbf8c9565ad8e1ac707fe"
+  },
+  "linux": {
+    "rerun": false,
+    "evidence": "../mit-adoption-20261016/receipt.json",
+    "evidence_receipt_sha256": "d97b8878179101c8375d02de19a368a3096d9035a915db650a44e07c94c70697",
+    "source_manifest_matches_current": true,
+    "retained_status": "passed",
+    "rust_unit_tests": 4,
+    "python_test_methods": 33,
+    "exit_code": 0,
+    "oom_killed": false,
+    "container_removed": true,
+    "vm_final_status": "Stopped",
+    "scope": "Virtualized Linux correctness observation, not native Linux performance"
+  },
+  "retained_report_sha256": {
+    "report.json": "a32ff6d5317c955937af328be44e4c418e3cc3052b62a2e9bae7fcb6d3d3d29d",
+    "report.html": "7a90a6737fed1888d395651abb645e9157e1994ba8bcc4e3b2ed402d7b605e6e"
+  },
+  "security_settings_sha256": "e2fb3245693b85c8c12327e6e145c90d644a453cfec188d711534b742d3c6d20",
+  "log_normalization": "Personal path prefixes replaced and trailing whitespace stripped; fixture-generated test rows are not measured trials."
+}

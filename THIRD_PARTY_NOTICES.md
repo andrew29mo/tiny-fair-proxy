@@ -2,7 +2,7 @@
 
 Original project code and documentation are licensed under the [MIT License](LICENSE).
 Copyright (c) 2026 Andrew Yuan. This does not relicense third-party components
-or change the repository's Private visibility.
+or determine repository visibility. The repository is now Public.
 
 The locked Rust dependencies offer MIT terms, including those whose upstream
 metadata uses legacy `MIT/Apache-2.0` notation. MIT is the selected option here.

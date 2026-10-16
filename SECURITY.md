@@ -15,3 +15,12 @@ Reports use synthetic payloads and whitelisted runtime provenance. Do not commit
 state directories, toolchains, credentials, personal settings or private traffic.
 Actions use read-only tokens and pinned actions; third-party dependency updates
 require review. No crash-recovery or delivery guarantee exists for live sockets.
+
+Public-repository controls include secret scanning and push protection,
+Dependabot alerts/security updates, approval before any external contributor's
+fork-PR workflow runs, and main history protection against deletion/force pushes.
+Linux/macOS CI checks are required on main with a repository-admin bypass for
+the solo maintainer; history protection has no configured bypass. Actions tokens
+default to read-only and cannot approve PRs; allowed actions are limited and
+must use full commit SHAs. These repository controls do not make the proxy safe
+to expose to untrusted traffic or prove that every vulnerability is detected.
