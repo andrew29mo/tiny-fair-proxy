@@ -1,0 +1,76 @@
+test_backend_refusal_cleans_connection (test_proxy.ProductionProxyTests.test_backend_refusal_cleans_connection) ... ok
+test_duplicate_state_directory_fails_without_removing_ready (test_proxy.ProductionProxyTests.test_duplicate_state_directory_fails_without_removing_ready) ... ok
+test_global_limit_independent_of_tenant_limit (test_proxy.ProductionProxyTests.test_global_limit_independent_of_tenant_limit) ... ok
+test_graceful_shutdown_drains_existing_half_closed_connection (test_proxy.ProductionProxyTests.test_graceful_shutdown_drains_existing_half_closed_connection) ... FAIL
+test_half_close_preserves_large_response_and_byte_order (test_proxy.ProductionProxyTests.test_half_close_preserves_large_response_and_byte_order) ... FAIL
+test_idle_timeout_returns_reserved_slot (test_proxy.ProductionProxyTests.test_idle_timeout_returns_reserved_slot) ... ok
+test_invalid_configuration_fails_closed (test_proxy.ProductionProxyTests.test_invalid_configuration_fails_closed) ... ok
+test_per_tenant_and_global_overload_reject_without_backend_work (test_proxy.ProductionProxyTests.test_per_tenant_and_global_overload_reject_without_backend_work) ... ok
+test_rate_budget_counts_successful_writes (test_proxy.ProductionProxyTests.test_rate_budget_counts_successful_writes) ... FAIL
+test_reset_does_not_kill_proxy (test_proxy.ProductionProxyTests.test_reset_does_not_kill_proxy) ... FAIL
+test_shutdown_deadline_forces_idle_connection (test_proxy.ProductionProxyTests.test_shutdown_deadline_forces_idle_connection) ... ok
+test_simultaneous_bidirectional_streams (test_proxy.ProductionProxyTests.test_simultaneous_bidirectional_streams) ... FAIL
+test_slow_consumer_backpressure_and_other_tenant_progress (test_proxy.ProductionProxyTests.test_slow_consumer_backpressure_and_other_tenant_progress) ... FAIL
+test_slow_consumer_backpressure_and_other_tenant_progress (test_proxy.ProductionProxyTests.test_slow_consumer_backpressure_and_other_tenant_progress) ... FAIL
+
+======================================================================
+FAIL: test_graceful_shutdown_drains_existing_half_closed_connection (test_proxy.ProductionProxyTests.test_graceful_shutdown_drains_existing_half_closed_connection)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_proxy.py", line 160, in test_graceful_shutdown_drains_existing_half_closed_connection
+    self.assertEqual(receive_all(s), response)
+AssertionError: b'rep[193652 chars]reply' != b'rep[193652 chars]replyreplyreplyreplyreplyreplyreplyreplyreplyr[6295 chars]eply'
+
+======================================================================
+FAIL: test_half_close_preserves_large_response_and_byte_order (test_proxy.ProductionProxyTests.test_half_close_preserves_large_response_and_byte_order)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_proxy.py", line 36, in test_half_close_preserves_large_response_and_byte_order
+    self.assertEqual(receive_all(s), response)
+AssertionError: b'' != b'\xff\xfe\xfd\xfc\xfb\xfa\xf9\xf8\xf7\xf6\[752678 chars]\xcb'
+
+======================================================================
+FAIL: test_rate_budget_counts_successful_writes (test_proxy.ProductionProxyTests.test_rate_budget_counts_successful_writes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_proxy.py", line 213, in test_rate_budget_counts_successful_writes
+    self.assertEqual(receive_all(s), hashlib.sha256(data).digest())
+AssertionError: b'' != b'\xf8\xe9\xf1\x01^\xf6\xf7\xa7\xe4\x7f1y\x[40 chars]\x1c'
+
+======================================================================
+FAIL: test_reset_does_not_kill_proxy (test_proxy.ProductionProxyTests.test_reset_does_not_kill_proxy)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_proxy.py", line 247, in test_reset_does_not_kill_proxy
+    self.assertEqual(receive_all(s), b'still-alive')
+AssertionError: b'' != b'still-alive'
+
+======================================================================
+FAIL: test_simultaneous_bidirectional_streams (test_proxy.ProductionProxyTests.test_simultaneous_bidirectional_streams)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_proxy.py", line 69, in test_simultaneous_bidirectional_streams
+    self.assertEqual(receive_all(s), response)
+AssertionError: b'oth[1038618 chars]direc' != b'oth[1038618 chars]directionother-directionother-directionother-d[11329 chars]tion'
+
+======================================================================
+FAIL: test_slow_consumer_backpressure_and_other_tenant_progress (test_proxy.ProductionProxyTests.test_slow_consumer_backpressure_and_other_tenant_progress)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_proxy.py", line 104, in test_slow_consumer_backpressure_and_other_tenant_progress
+    self.assertEqual(receive_all(f), b'fast-peer')
+AssertionError: b'' != b'fast-peer'
+
+======================================================================
+FAIL: test_slow_consumer_backpressure_and_other_tenant_progress (test_proxy.ProductionProxyTests.test_slow_consumer_backpressure_and_other_tenant_progress)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/support.py", line 86, in close
+    assert not self.thread.is_alive() and all(not t.is_alive() for t in self.threads), 'backend thread leaked'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: backend thread leaked
+
+----------------------------------------------------------------------
+Ran 13 tests in 10.260s
+
+FAILED (failures=7)

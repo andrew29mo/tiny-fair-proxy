@@ -1,0 +1,34 @@
+    Finished `release` profile [optimized] target(s) in 0.31s
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.05s
+     Running unittests src/main.rs (target/debug/deps/tiny_fair_proxy-2f5ee4b1c5dbb489)
+
+running 3 tests
+test tests::batching_avoids_fractional_refill_spin_without_starving_low_rates ... ok
+test tests::token_bucket_caps_burst_and_debits_actual_bytes ... ok
+test tests::buffer_compaction_preserves_bytes ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+test_tenant_weight_and_connection_count_in_both_directions (test_fairness.LiveFairnessTests.test_tenant_weight_and_connection_count_in_both_directions) ... ok
+test_backend_refusal_cleans_connection (test_proxy.ProductionProxyTests.test_backend_refusal_cleans_connection) ... ok
+test_duplicate_state_directory_fails_without_removing_ready (test_proxy.ProductionProxyTests.test_duplicate_state_directory_fails_without_removing_ready) ... ok
+test_global_limit_independent_of_tenant_limit (test_proxy.ProductionProxyTests.test_global_limit_independent_of_tenant_limit) ... ok
+test_graceful_shutdown_drains_existing_half_closed_connection (test_proxy.ProductionProxyTests.test_graceful_shutdown_drains_existing_half_closed_connection) ... ok
+test_half_close_preserves_large_response_and_byte_order (test_proxy.ProductionProxyTests.test_half_close_preserves_large_response_and_byte_order) ... ok
+test_idle_timeout_returns_reserved_slot (test_proxy.ProductionProxyTests.test_idle_timeout_returns_reserved_slot) ... ok
+test_invalid_configuration_fails_closed (test_proxy.ProductionProxyTests.test_invalid_configuration_fails_closed) ... ok
+test_per_tenant_and_global_overload_reject_without_backend_work (test_proxy.ProductionProxyTests.test_per_tenant_and_global_overload_reject_without_backend_work) ... ok
+test_rate_budget_counts_successful_writes (test_proxy.ProductionProxyTests.test_rate_budget_counts_successful_writes) ... ok
+test_reset_does_not_kill_proxy (test_proxy.ProductionProxyTests.test_reset_does_not_kill_proxy) ... ok
+test_shutdown_deadline_forces_idle_connection (test_proxy.ProductionProxyTests.test_shutdown_deadline_forces_idle_connection) ... ok
+test_simultaneous_bidirectional_streams (test_proxy.ProductionProxyTests.test_simultaneous_bidirectional_streams) ... ok
+test_slow_consumer_backpressure_and_other_tenant_progress (test_proxy.ProductionProxyTests.test_slow_consumer_backpressure_and_other_tenant_progress) ... ok
+test_all_retained_trials_and_html (test_report.RetainedReportTests.test_all_retained_trials_and_html) ... ok
+test_reject_forged_fairness_latency_rss_and_payload (test_report.RetainedReportTests.test_reject_forged_fairness_latency_rss_and_payload) ... ok
+test_reject_selective_pair_removal (test_report.RetainedReportTests.test_reject_selective_pair_removal) ... ok
+test_reject_source_mismatch_and_dropped_receiver_bytes (test_report.RetainedReportTests.test_reject_source_mismatch_and_dropped_receiver_bytes) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 32.638s
+
+OK

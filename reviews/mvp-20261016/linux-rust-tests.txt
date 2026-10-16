@@ -1,0 +1,8 @@
+     Running unittests src/main.rs (target/debug/deps/tiny_fair_proxy-cb224c15ea11c4d4)
+
+running 3 tests
+test tests::batching_avoids_fractional_refill_spin_without_starving_low_rates ... ok
+test tests::token_bucket_caps_burst_and_debits_actual_bytes ... ok
+test tests::buffer_compaction_preserves_bytes ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

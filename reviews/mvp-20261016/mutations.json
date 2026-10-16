@@ -1,0 +1,17 @@
+[
+  {
+    "fault": "premature_half_close",
+    "result": "behavioral-test-failed-as-required",
+    "test_file": "test_proxy.py"
+  },
+  {
+    "fault": "ignore_tenant_weights",
+    "result": "behavioral-test-failed-as-required",
+    "test_file": "test_fairness.py"
+  },
+  {
+    "fault": "do_not_charge_tokens",
+    "result": "behavioral-test-failed-as-required",
+    "test_file": "test_proxy.py"
+  }
+]

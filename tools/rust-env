@@ -1,0 +1,10 @@
+#!/bin/sh
+# Prefer an existing toolchain, otherwise the project-local installation.
+set -eu
+ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+if ! command -v cargo >/dev/null 2>&1; then
+  export CARGO_HOME="$ROOT/results/local/toolchain/cargo"
+  export RUSTUP_HOME="$ROOT/results/local/toolchain/rustup"
+  export PATH="$CARGO_HOME/bin:$PATH"
+fi
+exec "$@"

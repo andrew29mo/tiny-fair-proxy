@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "native": {
+    "platform": "native macOS ARM64",
+    "os_version": "27.0.1",
+    "python": "3.12.14",
+    "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+    "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+    "rust_unit_tests": 3,
+    "python_test_methods": 18,
+    "live_fairness_subcases": 4,
+    "source_files": {
+      "Cargo.lock": "cd2cb231c0cd3856ef01b127b827c56e4c20df19ddc07c00fb7bb5fb020d99bc",
+      "Cargo.toml": "20e0dc5fc51fa1eea9f89af04a5c6739c1b818aaf026c970c14a1ae7e080eea3",
+      "src/main.rs": "66d410856195858fbebd5b10330cbc31449160ecb695520597c4fd2ef71e5901",
+      "tests/support.py": "d39e15dae51654a8d3d8ca1562b4f8bab3fe54d5686ed51a99074e1da2ffedfe",
+      "tests/test_fairness.py": "9d67c334da0fa543f5f73a940b041eb190e7698412ae38dcbf83458e5acdfb17",
+      "tests/test_proxy.py": "f9de7190f4b67ce2a9dc2cac4e687584645906f699f8e1603824fc3f59d09bf9",
+      "tests/test_report.py": "67c5b384ee933ce9f60dd4ccb21f6ad7d4914f44cf2032c58c051561ed59ae78",
+      "tools/benchmark.py": "cdb1911ad2999cafad6a02d411620f84e2ed015f197bcc7f0c52866c1b7f997c",
+      "tools/check_report.py": "122dc7697ae42ff5db35ae32808e00bc7aae06893ca17d63dd2cd4552d8f24b0",
+      "tools/findings.py": "186ad89b0d6364de8ad9f58acd1c9d2b77da65bde54921ca7c4d962ff7bf476d",
+      "tools/mutation_check.py": "0946141e22ad063ad587319b2a984ee719139b6e22a046823c60397f28afd57f",
+      "tools/publication_check.py": "65b2afcc28ebf512e77654deb9900f8ec0c69cc2ba53effb735136bfb3b35a28"
+    },
+    "release_binary_sha256": "84b12736b89307d7cdb875fa690ede92578072e3471cdb9b5352c7c19d390df0",
+    "report_sha256": "d1c7b5fbea8b611d5d0e32ef05fbab8298f9aea601128079dabcf0913fadac6e",
+    "log_sha256": "001433304767c2da5d80e0f4f5f3a4b68602cea30b5efafef8d70cd563a1b7d7"
+  },
+  "linux": {
+    "status": "passed",
+    "environment": {
+      "os": "Linux",
+      "kernel": "6.8.0-117-generic",
+      "machine": "aarch64",
+      "python": "3.11.2",
+      "psutil": "7.0.0",
+      "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+      "source_files": {
+        "Cargo.lock": "cd2cb231c0cd3856ef01b127b827c56e4c20df19ddc07c00fb7bb5fb020d99bc",
+        "Cargo.toml": "20e0dc5fc51fa1eea9f89af04a5c6739c1b818aaf026c970c14a1ae7e080eea3",
+        "src/main.rs": "66d410856195858fbebd5b10330cbc31449160ecb695520597c4fd2ef71e5901",
+        "tests/support.py": "d39e15dae51654a8d3d8ca1562b4f8bab3fe54d5686ed51a99074e1da2ffedfe",
+        "tests/test_fairness.py": "9d67c334da0fa543f5f73a940b041eb190e7698412ae38dcbf83458e5acdfb17",
+        "tests/test_proxy.py": "f9de7190f4b67ce2a9dc2cac4e687584645906f699f8e1603824fc3f59d09bf9",
+        "tests/test_report.py": "67c5b384ee933ce9f60dd4ccb21f6ad7d4914f44cf2032c58c051561ed59ae78",
+        "tools/benchmark.py": "cdb1911ad2999cafad6a02d411620f84e2ed015f197bcc7f0c52866c1b7f997c",
+        "tools/check_report.py": "122dc7697ae42ff5db35ae32808e00bc7aae06893ca17d63dd2cd4552d8f24b0",
+        "tools/findings.py": "186ad89b0d6364de8ad9f58acd1c9d2b77da65bde54921ca7c4d962ff7bf476d",
+        "tools/mutation_check.py": "0946141e22ad063ad587319b2a984ee719139b6e22a046823c60397f28afd57f",
+        "tools/publication_check.py": "65b2afcc28ebf512e77654deb9900f8ec0c69cc2ba53effb735136bfb3b35a28"
+      },
+      "binary_sha256": "d803a2a60cf91d997c08bdbe81f3b9eaf4f04c488be428e5bf8909b7425993bd"
+    },
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-16T03:09:16.09739982Z",
+      "FinishedAt": "2026-10-16T03:09:49.125545109Z"
+    },
+    "image": "sha256:c53b2a68586fb0ce74c6b524f0a8e629daa78a662f013fea75440f69c783764b",
+    "config": {
+      "user": "validator",
+      "network": "none",
+      "memory": 536870912,
+      "nano_cpus": 2000000000,
+      "read_only_root": true,
+      "pids_limit": 128
+    },
+    "python_test_methods": 18,
+    "live_fairness_subcases": 4,
+    "container_removed": true,
+    "rust_unit_tests": 3,
+    "test_log_sha256": "68772b41c726fc895108e4e0a45944a5ad5f8f894621aec117a9df4bde338b2b",
+    "build_log_sha256": "128a049aa913dbe9eaa3e7272e13e43e985f70b05151a78aeda585b3582f06ff",
+    "vm_final_status": "Stopped",
+    "vm_architecture": "aarch64"
+  },
+  "remote_ci": {
+    "status": "not-yet-run"
+  },
+  "mutations": [
+    {
+      "fault": "premature_half_close",
+      "result": "behavioral-test-failed-as-required",
+      "test_file": "test_proxy.py"
+    },
+    {
+      "fault": "ignore_tenant_weights",
+      "result": "behavioral-test-failed-as-required",
+      "test_file": "test_fairness.py"
+    },
+    {
+      "fault": "do_not_charge_tokens",
+      "result": "behavioral-test-failed-as-required",
+      "test_file": "test_proxy.py"
+    }
+  ]
+}

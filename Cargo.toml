@@ -1,0 +1,13 @@
+[package]
+name = "tiny-fair-proxy"
+version = "0.1.0"
+edition = "2021"
+description = "Bounded TCP relay with tenant-weighted byte scheduling"
+publish = false
+
+[dependencies]
+libc = "0.2"
+socket2 = "0.6"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+signal-hook = "0.3"

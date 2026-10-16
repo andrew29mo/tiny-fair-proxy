@@ -1,0 +1,12 @@
+/target/
+/results/local/
+__pycache__/
+*.pyc
+.DS_Store
+.env*
+AGENTS.md
+.codex/
+.agents/
+*.log
+
+/.venv/

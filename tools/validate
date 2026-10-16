@@ -1,0 +1,7 @@
+#!/bin/sh
+set -eu
+cd "$(dirname "$0")/.."
+./tools/rust-env cargo build --release --locked
+./tools/rust-env cargo test --locked
+PYTHON=${PYTHON:-python3}
+"$PYTHON" -m unittest discover -s tests -v

@@ -1,0 +1,16 @@
+{
+  "mode": "tenant_fair",
+  "rate_bytes_per_sec": 1048576,
+  "burst_bytes": 16384,
+  "quantum_bytes": 4096,
+  "buffer_bytes": 65536,
+  "max_connections": 32,
+  "max_connections_per_tenant": 16,
+  "connect_timeout_ms": 2000,
+  "idle_timeout_ms": 30000,
+  "drain_timeout_ms": 5000,
+  "tenants": [
+    { "name": "interactive", "listen": "127.0.0.1:7001", "backend": "127.0.0.1:9001", "weight": 3 },
+    { "name": "bulk", "listen": "127.0.0.1:7002", "backend": "127.0.0.1:9001", "weight": 1 }
+  ]
+}
