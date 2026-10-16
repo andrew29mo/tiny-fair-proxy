@@ -107,6 +107,10 @@ subcases). Three compiled production faults were detected on macOS. Linux
 uses the same source manifest; its correctness run is separate from the native
 performance grid. See [validation receipt and logs](reviews/mvp-20261016/README.md).
 
+The [first hosted CI run](https://github.com/andrew29mo/tiny-fair-proxy/actions/runs/38844282524) was blocked before any steps
+by GitHub account billing/spending restrictions. Neither hosted job executed;
+local validation above is not a claim of hosted CI success.
+
 ## Status and license
 
 Private MVP; no project open-source license selected. See

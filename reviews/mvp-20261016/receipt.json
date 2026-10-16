@@ -84,7 +84,22 @@
     "vm_architecture": "aarch64"
   },
   "remote_ci": {
-    "status": "not-yet-run"
+    "status": "not-started-billing-or-spending-limit",
+    "observed_commit": "14884d6e37492802eb02b0f05b1c26a7f6386cef",
+    "run_url": "https://github.com/andrew29mo/tiny-fair-proxy/actions/runs/38844282524",
+    "jobs": [
+      {
+        "name": "test (ubuntu-latest)",
+        "conclusion": "failure",
+        "executed_steps": 0
+      },
+      {
+        "name": "test (macos-latest)",
+        "conclusion": "failure",
+        "executed_steps": 0
+      }
+    ],
+    "annotation": "The job was not started because recent account payments have failed or your spending limit needs to be increased."
   },
   "mutations": [
     {

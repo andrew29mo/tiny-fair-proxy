@@ -32,6 +32,8 @@ The container used a read-only root, loopback-only network, two CPUs and a 512 M
 limit. Actual exit code was 0 with no OOM, and the owned container was removed.
 Linux Python is Debian 3.11.2; native Python is 3.12. These are separate correctness
 observations with matching source manifests, not identical runtime environments.
-Hosted CI has its own status field. Native measurements are not virtual-machine
+The hosted run for commit `14884d6` was blocked before either job started by
+GitHub account billing/spending restrictions. Its annotation and URL are in the
+receipt; no hosted test success is claimed. Native measurements are not virtual-machine
 memory or Linux performance observations.
 Project licensing remains unselected; third-party licenses are listed separately.
