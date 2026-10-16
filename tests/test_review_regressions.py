@@ -157,11 +157,23 @@ class HarnessRegressions(unittest.TestCase):
 
     def test_report_failure_overwrites_previous_success(self):
         import benchmark
-        with tempfile.TemporaryDirectory() as tmp:
-            path=Path(tmp);(path/'report.json').write_text('{"status":"passed"}')
-            with patch.object(sys,'argv',['benchmark','--output',tmp,'--blocks','1','--label','failure-fixture']),patch.object(benchmark,'build_for_measurement',return_value=binary_identity()),patch.object(benchmark,'run_trial',side_effect=RuntimeError('injected failure')):
-                with self.assertRaisesRegex(RuntimeError,'injected failure'):benchmark.main()
-            self.assertEqual(json.loads((path/'report.json').read_text())['status'],'failed')
+        for stage in ['build','trial','html']:
+            with self.subTest(stage=stage),tempfile.TemporaryDirectory() as tmp:
+                path=Path(tmp);(path/'report.json').write_text('{"status":"passed"}')
+                (path/'report.html').write_text('<h1>old successful result</h1>')
+                build_error=RuntimeError('injected failure') if stage=='build' else None
+                trial_error=RuntimeError('injected failure') if stage=='trial' else None
+                original_write=Path.write_text
+                def fail_html_write(p,*args,**kw):
+                    if p==path/'report.html':
+                        original_write(p,'partial HTML')
+                        raise RuntimeError('injected failure')
+                    return original_write(p,*args,**kw)
+                trial=dict(binary_identity=binary_identity(),direction='upload',weights=[1,1],mode='tenant_fair',receiver_window_shares=[.5,.5],weighted_jain=1.,fairness_window_all_flows_active=True)
+                with patch.object(sys,'argv',['benchmark','--output',tmp,'--blocks','1','--label','failure-fixture']),patch.object(benchmark,'build_for_measurement',return_value=binary_identity(),side_effect=build_error),patch.object(benchmark,'run_trial',return_value=trial,side_effect=trial_error),patch.object(benchmark,'render',return_value='<h1>new result</h1>'),patch.object(Path,'write_text',fail_html_write if stage=='html' else original_write):
+                    with self.assertRaisesRegex(RuntimeError,'injected failure'):benchmark.main()
+                self.assertEqual(json.loads((path/'report.json').read_text())['status'],'failed')
+                self.assertFalse((path/'report.html').exists())
 
     def test_sampling_failure_prevents_successful_trial(self):
         import benchmark

@@ -1,5 +1,11 @@
 # Scheduling and evidence review — 2026-10-16
 
+This record describes commit `8617ad0` and is historical after the
+[pre-publication review](../prepublication-20261016/README.md). Its unchanged
+schema-2 JSON/HTML are now in
+[`results/historical-review-8617ad0`](../../results/historical-review-8617ad0/).
+The root README and `results/native-macos-arm64` describe the latest version.
+
 Reviewed baseline: `11d0923456a7752dc622c4934ef93da64b417105`.
 The baseline worktree was clean. No owner edits were overwritten. Repository
 visibility stays Private; project licensing stays unselected.

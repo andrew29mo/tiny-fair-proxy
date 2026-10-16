@@ -21,7 +21,9 @@ are rejected. Mode order is randomized with a retained seed within each paired b
 blocks contain 24 complete trials. No pair is discarded for weak fairness or a
 slow result. A run failure prevents a final `passed` report. A run writes `running` before its first trial and records `failed` on errors,
 including interrupts. Neither status passes verification; old success files are
-overwritten before execution.
+overwritten before execution. Old HTML is removed before compilation starts.
+Compilation, trial or HTML-write failures leave a failed JSON and no successful
+HTML artifact; these failed runs must not display a previous result as current.
 
 Fairness is observed at receivers during the same [0.4, 1.4] second window.
 Each flow must have a receive observation before and after that window to label

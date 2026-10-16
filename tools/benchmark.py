@@ -175,14 +175,18 @@ def main():
         raise ValueError('blocks must be positive')
     if BINARY != ROOT/'target/release/tiny-fair-proxy' or os.environ.get('PROXY_ALLOW_FAULT_BUILD'):
         raise RuntimeError('formal measurement requires the normal production binary')
-    identity=build_for_measurement()
     args.output.mkdir(parents=True, exist_ok=True)
-    before = source_manifest()
-    report = dict(schema_version=2, plan=dict(blocks=args.blocks, seed=1642), binary_identity=identity, environment=dict(label=args.label, os=platform.system(), machine=platform.machine(), python=platform.python_version(), psutil=psutil.__version__, os_release=platform.release(), macos=platform.mac_ver()[0], logical_cpus=os.cpu_count()),
-                  source_files=before, binary_sha256=hashlib.sha256(BINARY.read_bytes()).hexdigest(),
-                  schedule=dict(seed=1642, arrival_offsets_s=[0,.005,.010,.015,.020]), trials=[], status='running')
-    (args.output/'report.json').write_text(json.dumps(report,indent=2)+'\n')
+    report = dict(schema_version=2, trials=[], status='running')
     try:
+        # Invalidate both old artifacts before compilation or any trial can fail.
+        (args.output/'report.html').unlink(missing_ok=True)
+        (args.output/'report.json').write_text(json.dumps(report,indent=2)+'\n')
+        identity=build_for_measurement()
+        before = source_manifest()
+        report.update(plan=dict(blocks=args.blocks, seed=1642), binary_identity=identity, environment=dict(label=args.label, os=platform.system(), machine=platform.machine(), python=platform.python_version(), psutil=psutil.__version__, os_release=platform.release(), macos=platform.mac_ver()[0], logical_cpus=os.cpu_count()),
+                      source_files=before, binary_sha256=hashlib.sha256(BINARY.read_bytes()).hexdigest(),
+                      schedule=dict(seed=1642, arrival_offsets_s=[0,.005,.010,.015,.020]))
+        (args.output/'report.json').write_text(json.dumps(report,indent=2)+'\n')
         rng = random.Random(1642)
         for block in range(args.blocks):
             for weights in [[1,1],[1,3]]:
@@ -203,6 +207,7 @@ def main():
         (args.output/'report.json').write_text(json.dumps(report,indent=2)+'\n')
         (args.output/'report.html').write_text(render(report))
     except BaseException as error:
+        (args.output/'report.html').unlink(missing_ok=True)
         report.update(status='failed',error_type=type(error).__name__)
         (args.output/'report.json').write_text(json.dumps(report,indent=2)+'\n')
         raise

@@ -1,0 +1,7 @@
+{
+  "runtime_failure_json": "failed",
+  "runtime_failure_keeps_old_html": true,
+  "build_failure_json": "passed",
+  "build_failure_keeps_old_html": true,
+  "baseline_commit": "8617ad0e42de355079aeb6c6cb658c16c1a8d312"
+}
