@@ -1,0 +1,6 @@
+#10 6.729 running 4 tests
+#10 6.730 test tests::batching_avoids_fractional_refill_spin_without_starving_low_rates ... ok
+#10 6.730 test tests::buffer_compaction_preserves_bytes ... ok
+#10 6.730 test tests::token_bucket_caps_burst_and_debits_actual_bytes ... ok
+#10 6.730 test tests::connect_deadline_returns_slot_and_balances_outcome ... ok
+#10 6.730 test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

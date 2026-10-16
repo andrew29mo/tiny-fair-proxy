@@ -1,0 +1,59 @@
+test_backend_refusal_cleans_connection (test_proxy.ProductionProxyTests.test_backend_refusal_cleans_connection) ... ok
+test_duplicate_state_directory_fails_without_removing_ready (test_proxy.ProductionProxyTests.test_duplicate_state_directory_fails_without_removing_ready) ... ok
+test_global_limit_independent_of_tenant_limit (test_proxy.ProductionProxyTests.test_global_limit_independent_of_tenant_limit) ... ok
+test_graceful_shutdown_drains_existing_half_closed_connection (test_proxy.ProductionProxyTests.test_graceful_shutdown_drains_existing_half_closed_connection) ... ok
+test_half_close_preserves_large_response_and_byte_order (test_proxy.ProductionProxyTests.test_half_close_preserves_large_response_and_byte_order) ... FAIL
+test_half_close_preserves_large_response_and_byte_order (test_proxy.ProductionProxyTests.test_half_close_preserves_large_response_and_byte_order) ... FAIL
+test_idle_timeout_returns_reserved_slot (test_proxy.ProductionProxyTests.test_idle_timeout_returns_reserved_slot) ... ok
+test_invalid_configuration_fails_closed (test_proxy.ProductionProxyTests.test_invalid_configuration_fails_closed) ... ok
+test_per_tenant_and_global_overload_reject_without_backend_work (test_proxy.ProductionProxyTests.test_per_tenant_and_global_overload_reject_without_backend_work) ... ok
+test_rate_budget_counts_successful_writes (test_proxy.ProductionProxyTests.test_rate_budget_counts_successful_writes) ... FAIL
+test_reset_does_not_kill_proxy (test_proxy.ProductionProxyTests.test_reset_does_not_kill_proxy) ... FAIL
+test_shutdown_deadline_forces_idle_connection (test_proxy.ProductionProxyTests.test_shutdown_deadline_forces_idle_connection) ... ok
+test_simultaneous_bidirectional_streams (test_proxy.ProductionProxyTests.test_simultaneous_bidirectional_streams) ... ok
+test_slow_consumer_backpressure_and_other_tenant_progress (test_proxy.ProductionProxyTests.test_slow_consumer_backpressure_and_other_tenant_progress) ... FAIL
+
+======================================================================
+FAIL: test_half_close_preserves_large_response_and_byte_order (test_proxy.ProductionProxyTests.test_half_close_preserves_large_response_and_byte_order)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repository>/tests/test_proxy.py", line 46, in test_half_close_preserves_large_response_and_byte_order
+    self.assertEqual(receive_all(s), response)
+AssertionError: b'' != b'\xa4^\x8e\t\xd0\x1f\xceyD\xe9\xf7xvb\x8c\[752221 chars]\xfe'
+
+======================================================================
+FAIL: test_half_close_preserves_large_response_and_byte_order (test_proxy.ProductionProxyTests.test_half_close_preserves_large_response_and_byte_order)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repository>/tests/support.py", line 116, in close
+    raise AssertionError(f'unexpected backend error: {list(self.errors.queue)}')
+AssertionError: unexpected backend error: ['AssertionError("b\'\\\\xa[1481850 chars]11JR<\' != b\'\\\\xa[1481850 chars]11JR<z\\\\xa9\\\\xa3\\\\x7fe/\\\\x83\\\\x89\\\\xa2\\\\xd3\\\\xbf\\\\x16\\\\\\\\[24289 chars]\\\\xb0\'")']
+
+======================================================================
+FAIL: test_rate_budget_counts_successful_writes (test_proxy.ProductionProxyTests.test_rate_budget_counts_successful_writes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repository>/tests/test_proxy.py", line 233, in test_rate_budget_counts_successful_writes
+    self.assertEqual(receive_all(s), hashlib.sha256(data).digest())
+AssertionError: b'e\x82c\xd8\x91?I\x1b\xabld\x10M&R\xcfG\xa[27 chars]1c=x' != b'\xf7\xb8\x88\x13*\x15_=V\xa4\xa7\xae\xe9\[54 chars]\xf7'
+
+======================================================================
+FAIL: test_reset_does_not_kill_proxy (test_proxy.ProductionProxyTests.test_reset_does_not_kill_proxy)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repository>/tests/test_proxy.py", line 268, in test_reset_does_not_kill_proxy
+    self.assertEqual(receive_all(s), b'still-alive')
+AssertionError: b'' != b'still-alive'
+
+======================================================================
+FAIL: test_slow_consumer_backpressure_and_other_tenant_progress (test_proxy.ProductionProxyTests.test_slow_consumer_backpressure_and_other_tenant_progress)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repository>/tests/test_proxy.py", line 120, in test_slow_consumer_backpressure_and_other_tenant_progress
+    self.assertEqual(receive_all(f), b'fast-peer')
+AssertionError: b'' != b'fast-peer'
+
+----------------------------------------------------------------------
+Ran 13 tests in 11.388s
+
+FAILED (failures=5)

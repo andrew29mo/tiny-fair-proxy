@@ -1,5 +1,6 @@
 """Actual TCP peers and actual release executable; no replacement relay."""
 import json
+import hashlib
 import os
 from pathlib import Path
 import queue
@@ -12,6 +13,20 @@ import time
 
 ROOT = Path(__file__).resolve().parents[1]
 BINARY = Path(os.environ.get('PROXY_BINARY', ROOT / 'target/release/tiny-fair-proxy'))
+if not __debug__:
+    raise RuntimeError('Validation requires Python assertions; optimized Python is refused')
+
+
+def binary_identity(binary=BINARY):
+    result = subprocess.run([str(binary), '--identity'], capture_output=True, text=True, timeout=5, check=True)
+    identity = json.loads(result.stdout)
+    expected = {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
+                for p in [ROOT/'Cargo.toml', ROOT/'Cargo.lock', ROOT/'build.rs', *sorted((ROOT/'src').rglob('*.rs'))]}
+    if os.environ.get('PROXY_ALLOW_FAULT_BUILD') != '1' and identity['files'] != expected:
+        raise AssertionError('release executable does not match current production source; rebuild it')
+    if identity['profile'] != 'release':
+        raise AssertionError('tests require a release executable')
+    return identity
 
 
 def wait_for(fn, seconds=5):
@@ -24,12 +39,23 @@ def wait_for(fn, seconds=5):
     raise AssertionError('condition timed out')
 
 
-def receive_all(s):
+def receive_all(s, *, deadline=None, max_bytes=32*1024*1024, on_chunk=None):
+    deadline = time.monotonic()+15 if deadline is None else deadline
     chunks = []
+    total = 0
     while True:
+        remaining = deadline-time.monotonic()
+        if remaining <= 0:
+            raise TimeoutError('absolute receive deadline exceeded')
+        s.settimeout(min(remaining, 10))
         data = s.recv(65536)
         if not data:
             return b''.join(chunks)
+        total += len(data)
+        if total > max_bytes:
+            raise AssertionError('receiver exceeded declared byte budget')
+        if on_chunk is not None:
+            on_chunk(data)
         chunks.append(data)
 
 
@@ -43,6 +69,7 @@ class Backend:
         self.address = '%s:%s' % self.socket.getsockname()
         self.stop = threading.Event()
         self.errors = queue.Queue()
+        self.allow_peer_errors = False
         self.clients = []
         self.threads = []
         self.thread = threading.Thread(target=self._accept, daemon=True)
@@ -74,20 +101,24 @@ class Backend:
     def close(self):
         self.stop.set()
         self.socket.close()
+        self.thread.join(2)
         for s in self.clients:
             try:
                 s.shutdown(socket.SHUT_RDWR)
             except OSError:
                 pass
             s.close()
-        self.thread.join(2)
+        deadline = time.monotonic()+6
         for t in self.threads:
-            t.join(2)
+            t.join(max(0, deadline-time.monotonic()))
         assert not self.thread.is_alive() and all(not t.is_alive() for t in self.threads), 'backend thread leaked'
+        if not self.allow_peer_errors and not self.errors.empty():
+            raise AssertionError(f'unexpected backend error: {list(self.errors.queue)}')
 
 
 class Proxy:
     def __init__(self, backend, **overrides):
+        self.identity = binary_identity()
         self.temp = tempfile.TemporaryDirectory()
         self.directory = Path(self.temp.name)
         tenant_overrides = overrides.pop('tenants', None)
@@ -139,5 +170,8 @@ class Proxy:
                 self.process.kill()
                 self.process.wait(3)
                 raise AssertionError('proxy did not exit within deadline')
+        code = self.process.returncode
         self.log.close()
         self.temp.cleanup()
+        if not force and code != 0:
+            raise AssertionError(f'proxy exited abnormally: {code}')

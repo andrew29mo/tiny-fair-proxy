@@ -13,6 +13,9 @@ Runtime crates (exact transitive versions: Cargo.lock):
   the [locked dependency list](docs/DEPENDENCIES.md). This includes unicode-ident
   with Unicode-3.0 terms, memchr (Unlicense OR MIT) and zmij (MIT).
 
+Build-time source identity additionally uses sha2 (MIT OR Apache-2.0); exact
+transitive versions and license expressions are in the locked dependency list.
+
 Development: psutil 7.0.0 (BSD-3-Clause), Python (PSF and bundled notices), Rust
 compiler/toolchain (its own upstream terms). No third-party source, toolchain or
 binary is vendored in Git. Examples and measurements use synthetic byte streams,

@@ -16,7 +16,7 @@ exceed remaining capacity. Listener/global admission caps bound connection state
 The event loop limits accepts per listener/turn and writes per turn.
 
 The reservation covers **payload arrays only**, not process RSS, metadata, allocator
-or kernel TCP buffers. `peak_queued_bytes` is a sampled event-loop high-water mark
+or kernel TCP buffers. `peak_queued_bytes` is updated at every successful read and measures the high-water mark
 of live payload length, not the allocated capacity. No whole-machine memory cap
 or network isolation is claimed. Kernel buffers can absorb data before a blocked
 receiver propagates backpressure.
@@ -31,8 +31,10 @@ Both modes share the exact I/O, buffer, timeout, admission and token-bucket code
   unfinished visit across token exhaustion. More connections can earn more share.
 - `tenant_fair`: weighted deficit round robin across tenants, and connection
   rotation inside each tenant. A tenant visit gets `quantum * weight` bytes.
-  The cursor and remaining deficit survive global token exhaustion. Empty or
-  non-writable tenant visits lose stored credit, preventing idle credit hoarding.
+  The cursor and remaining deficit survive global token exhaustion. An empty
+  staging buffer is refilled nonblocking before a visit is retired; its capacity
+  must not truncate a tenant quantum. Truly empty or non-writable visits lose
+  stored credit, preventing idle credit hoarding.
 
 Only buffered, connected, writable destinations are eligible. The poll loop
 rechecks readiness; write budgets do not cause sleeps or unbounded retries inside
@@ -64,6 +66,21 @@ A state-directory OS file lock prevents concurrent writers. A leftover ready fil
 after SIGKILL is not proof of a live process. State is monitoring data, not durable
 connection recovery. Metrics use same-directory temp/rename; sockets do not survive
 restarts. No payloads or peer addresses are logged by default.
+
+## Accounting and executable identity
+
+Admission increments accepted before initiating a backend connection, including
+synchronous connect failures. Every accepted pair has one completed/error/expiry/
+forced-drain/live disposition. Both directions record received, forwarded, discarded
+and queued bytes, globally and per tenant. Closing a failed or expired pair records
+its remaining buffers as discarded. At every stage: received = forwarded +
+discarded + queued. Kernel/client bytes never read by the proxy are outside this
+ledger; socket acceptance is not proof of application delivery.
+
+`--identity` prints build-time SHA-256 digests for Rust source, Cargo manifests and
+the build script, plus compiler/target/profile. Tests reject stale executables.
+Formal measurement rebuilds release first and checks executable stability across
+every trial. This is provenance checking, not cryptographic execution attestation.
 
 ## Deliberate MVP exclusions
 

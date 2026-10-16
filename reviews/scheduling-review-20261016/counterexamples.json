@@ -1,0 +1,46 @@
+{
+  "whole_blocks_removed_but_accepted": 8,
+  "empty_share_vectors_accepted": 24,
+  "optimized_python_accepts_failed_report": {
+    "exit_code": 0,
+    "stdout": "Checked all 24 trials: full grid, exact bytes, common schedule, receiver traces, fairness, throughput, process samples, accounting and canonical HTML.\n",
+    "stderr": ""
+  },
+  "baseline_commit": "11d0923456a7752dc622c4934ef93da64b417105",
+  "small_staging_buffer_before": {
+    "weights": [
+      1,
+      3
+    ],
+    "buffer_bytes": 1024,
+    "quantum_bytes": 4096,
+    "burst_bytes": 16384,
+    "receiver_window_bytes": [
+      52799,
+      79332
+    ],
+    "shares": [
+      0.3995958556281266,
+      0.6004041443718734
+    ],
+    "all_active": true
+  },
+  "small_staging_buffer_after_initial_fix": {
+    "weights": [
+      1,
+      3
+    ],
+    "buffer_bytes": 1024,
+    "quantum_bytes": 4096,
+    "burst_bytes": 16384,
+    "receiver_window_bytes": [
+      32768,
+      98382
+    ],
+    "shares": [
+      0.24985131528783835,
+      0.7501486847121617
+    ],
+    "all_active": true
+  }
+}

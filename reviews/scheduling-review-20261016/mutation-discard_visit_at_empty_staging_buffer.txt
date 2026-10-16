@@ -1,0 +1,24 @@
+test_small_buffer_large_quantum_preserves_weight_both_directions (test_review_regressions.ReviewRegressions.test_small_buffer_large_quantum_preserves_weight_both_directions) ...
+  test_small_buffer_large_quantum_preserves_weight_both_directions (test_review_regressions.ReviewRegressions.test_small_buffer_large_quantum_preserves_weight_both_directions) (direction='upload') ... FAIL
+  test_small_buffer_large_quantum_preserves_weight_both_directions (test_review_regressions.ReviewRegressions.test_small_buffer_large_quantum_preserves_weight_both_directions) (direction='download') ... FAIL
+
+======================================================================
+FAIL: test_small_buffer_large_quantum_preserves_weight_both_directions (test_review_regressions.ReviewRegressions.test_small_buffer_large_quantum_preserves_weight_both_directions) (direction='upload')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repository>/tests/test_review_regressions.py", line 54, in test_small_buffer_large_quantum_preserves_weight_both_directions
+    self.assertAlmostEqual(counts[0]/sum(counts),.25,delta=.04)
+AssertionError: 0.49497770404979685 != 0.25 within 0.04 delta (0.24497770404979685 difference)
+
+======================================================================
+FAIL: test_small_buffer_large_quantum_preserves_weight_both_directions (test_review_regressions.ReviewRegressions.test_small_buffer_large_quantum_preserves_weight_both_directions) (direction='download')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repository>/tests/test_review_regressions.py", line 54, in test_small_buffer_large_quantum_preserves_weight_both_directions
+    self.assertAlmostEqual(counts[0]/sum(counts),.25,delta=.04)
+AssertionError: 0.44167637141400073 != 0.25 within 0.04 delta (0.19167637141400073 difference)
+
+----------------------------------------------------------------------
+Ran 1 test in 8.573s
+
+FAILED (failures=2)

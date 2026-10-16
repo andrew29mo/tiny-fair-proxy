@@ -119,7 +119,7 @@ impl Buffer {
         }
     }
     fn prepare(&mut self) {
-        if self.end == self.data.len() && self.start > 0 {
+        if self.start > 0 {
             self.data.copy_within(self.start..self.end, 0);
             self.end -= self.start;
             self.start = 0;
@@ -177,6 +177,9 @@ struct TenantStats {
     accepted: u64,
     rejected: u64,
     forwarded: [u64; 2],
+    received: [u64; 2],
+    discarded: [u64; 2],
+    queued_bytes: [u64; 2],
     pauses: u64,
     peak_queued_bytes: usize,
 }
@@ -195,6 +198,10 @@ struct Metrics {
     peak_connections: usize,
     peak_queued_bytes: usize,
     reserved_payload_bytes: usize,
+    received: [u64; 2],
+    forwarded: [u64; 2],
+    discarded: [u64; 2],
+    queued_bytes: [u64; 2],
     tenants: Vec<TenantStats>,
     elapsed_seconds: f64,
 }
@@ -298,6 +305,8 @@ impl Proxy {
                     }
                     client.set_nonblocking(true)?;
                     client.set_nodelay(true)?;
+                    self.metrics.accepted += 1;
+                    self.metrics.tenants[t].accepted += 1;
                     match connecting(self.cfg.tenants[t].backend) {
                         Ok(backend) => {
                             let mut buffers = self.pool.pop().expect("reserved slot");
@@ -322,8 +331,6 @@ impl Proxy {
                                 },
                             );
                             self.next += 1;
-                            self.metrics.accepted += 1;
-                            self.metrics.tenants[t].accepted += 1;
                             self.metrics.peak_connections =
                                 self.metrics.peak_connections.max(self.conns.len());
                         }
@@ -339,6 +346,13 @@ impl Proxy {
     }
     fn remove(&mut self, id: u64) {
         if let Some(c) = self.conns.remove(&id) {
+            for d in 0..2 {
+                let n = c.buffers[d].len() as u64;
+                self.metrics.discarded[d] += n;
+                self.metrics.queued_bytes[d] -= n;
+                self.metrics.tenants[c.tenant].discarded[d] += n;
+                self.metrics.tenants[c.tenant].queued_bytes[d] -= n;
+            }
             self.pool.push(c.buffers);
         }
     }
@@ -365,6 +379,18 @@ impl Proxy {
                 }
                 Ok(n) => {
                     b.end += n;
+                    self.metrics.received[e] += n as u64;
+                    self.metrics.queued_bytes[e] += n as u64;
+                    let tenant = &mut self.metrics.tenants[c.tenant];
+                    tenant.received[e] += n as u64;
+                    tenant.queued_bytes[e] += n as u64;
+                    tenant.peak_queued_bytes = tenant
+                        .peak_queued_bytes
+                        .max(tenant.queued_bytes.iter().sum::<u64>() as usize);
+                    self.metrics.peak_queued_bytes = self
+                        .metrics
+                        .peak_queued_bytes
+                        .max(self.metrics.queued_bytes.iter().sum::<u64>() as usize);
                     c.last_io = Instant::now();
                 }
                 Err(err) if err.kind() == io::ErrorKind::WouldBlock => break,
@@ -391,6 +417,9 @@ impl Proxy {
                 b.consume(written);
                 c.last_io = Instant::now();
                 self.buckets[d].charge(written);
+                self.metrics.forwarded[d] += written as u64;
+                self.metrics.queued_bytes[d] -= written as u64;
+                self.metrics.tenants[c.tenant].queued_bytes[d] -= written as u64;
                 self.metrics.tenants[c.tenant].forwarded[d] += written as u64;
                 Ok(written)
             }
@@ -398,13 +427,38 @@ impl Proxy {
                 c.writable[dst] = false;
                 Ok(0)
             }
-            Err(e) if e.kind() == io::ErrorKind::Interrupted => Ok(0),
+            Err(e) if e.kind() == io::ErrorKind::Interrupted => {
+                c.writable[dst] = false;
+                Ok(0)
+            }
             Err(e) => Err(e),
         }
     }
     fn eligible(&self, id: u64, d: usize) -> bool {
         let c = &self.conns[&id];
         !c.connecting && c.writable[1 - d] && c.buffers[d].len() > 0
+    }
+    fn refill_empty(&mut self, d: usize, tenant: Option<usize>) {
+        // An empty staging buffer is not necessarily an idle TCP source. Refill
+        // nonblocking before retiring a DRR visit, including when quantum > buffer.
+        let ids: Vec<_> = self
+            .conns
+            .iter()
+            .filter(|(_, c)| {
+                !c.connecting
+                    && !c.eof[d]
+                    && c.buffers[d].len() == 0
+                    && c.writable[1 - d]
+                    && tenant.is_none_or(|t| c.tenant == t)
+            })
+            .map(|(id, _)| *id)
+            .collect();
+        for id in ids {
+            if self.read_conn(id, d).is_err() {
+                self.metrics.io_errors += 1;
+                self.remove(id);
+            }
+        }
     }
     fn schedule(&mut self, d: usize) {
         // No writable interest was requested while waiting for a credit batch.
@@ -422,6 +476,7 @@ impl Proxy {
                 let mut found = None;
                 for _ in 0..n {
                     let t = self.sched[d].cursor;
+                    self.refill_empty(d, Some(t));
                     let ids: Vec<u64> = self
                         .conns
                         .iter()
@@ -444,6 +499,7 @@ impl Proxy {
                 }
                 found
             } else {
+                self.refill_empty(d, None);
                 let ids: Vec<u64> = self
                     .conns
                     .keys()
@@ -479,9 +535,6 @@ impl Proxy {
                         if n == 0 {
                             self.rr_left[d] = 0;
                         }
-                    }
-                    if n == 0 {
-                        break;
                     }
                 }
                 Err(_) => {
@@ -532,15 +585,6 @@ impl Proxy {
         }
     }
     fn update_metrics(&mut self) {
-        let mut totals = vec![0; self.cfg.tenants.len()];
-        for c in self.conns.values() {
-            totals[c.tenant] += c.buffers.iter().map(Buffer::len).sum::<usize>();
-        }
-        self.metrics.peak_queued_bytes = self.metrics.peak_queued_bytes.max(totals.iter().sum());
-        for (t, n) in totals.iter().enumerate() {
-            self.metrics.tenants[t].peak_queued_bytes =
-                self.metrics.tenants[t].peak_queued_bytes.max(*n);
-        }
         self.metrics.current_connections = self.conns.len();
         self.metrics.elapsed_seconds = self.started.elapsed().as_secs_f64();
     }
@@ -668,6 +712,13 @@ impl Proxy {
 }
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args: Vec<_> = std::env::args_os().collect();
+    if args.len() == 2 && args[1] == "--identity" {
+        println!(
+            "{}",
+            include_str!(concat!(env!("OUT_DIR"), "/identity.json"))
+        );
+        return Ok(());
+    }
     if args.len() != 3 {
         return Err("usage: tiny-fair-proxy CONFIG.json STATE_DIRECTORY".into());
     }
@@ -709,6 +760,50 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    fn config_for_test(backend: SocketAddr) -> Config {
+        Config {
+            mode: "tenant_fair".into(),
+            rate_bytes_per_sec: 1024,
+            burst_bytes: 1024,
+            quantum_bytes: 4096,
+            buffer_bytes: 1024,
+            max_connections: 1,
+            max_connections_per_tenant: 1,
+            connect_timeout_ms: 100,
+            idle_timeout_ms: 10000,
+            drain_timeout_ms: 1000,
+            tenants: vec![Tenant {
+                name: "test".into(),
+                listen: "127.0.0.1:0".parse().unwrap(),
+                backend,
+                weight: 1,
+            }],
+        }
+    }
+    #[test]
+    fn connect_deadline_returns_slot_and_balances_outcome() {
+        let backend = TcpListener::bind("127.0.0.1:0").unwrap();
+        let mut p = Proxy::new(config_for_test(backend.local_addr().unwrap())).unwrap();
+        let _client = TcpStream::connect(p.listeners[0].local_addr().unwrap()).unwrap();
+        let ready_deadline = Instant::now() + Duration::from_secs(1);
+        while p.conns.is_empty() && Instant::now() < ready_deadline {
+            p.accept(0).unwrap();
+            std::thread::sleep(Duration::from_millis(1));
+        }
+        assert_eq!(
+            p.conns.len(),
+            1,
+            "fixture failed to start a connection: accepted={}, errors={}",
+            p.metrics.accepted,
+            p.metrics.connect_errors
+        );
+        p.conns.values_mut().next().unwrap().created = Instant::now() - Duration::from_millis(101);
+        p.finish_and_expire();
+        assert_eq!(p.metrics.accepted, 1);
+        assert_eq!(p.metrics.connect_timeouts, 1);
+        assert!(p.conns.is_empty());
+        assert_eq!(p.pool.len(), 1);
+    }
     #[test]
     fn batching_avoids_fractional_refill_spin_without_starving_low_rates() {
         let mut fast = Bucket::new(524288, 4096);

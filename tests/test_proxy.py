@@ -17,12 +17,22 @@ class ProductionProxyTests(unittest.TestCase):
 
     def proxy(self, b, **kw):
         p = Proxy(b.address, **kw)
-        self.addCleanup(p.close)
+        def cleanup():
+            try:
+                p.terminate() if p.process.poll() is None else None
+                m = p.finish() if p.process.poll() is None else p.metrics()
+                self.assertEqual(m['accepted'],sum(m[k] for k in ['completed','io_errors','connect_errors','connect_timeouts','idle_timeouts','forced_drain','current_connections']))
+                for d in range(2):
+                    self.assertEqual(m['received'][d],m['forwarded'][d]+m['discarded'][d]+m['queued_bytes'][d])
+                    self.assertEqual(m['queued_bytes'][d],0)
+            finally:
+                p.close()
+        self.addCleanup(cleanup)
         return p
 
     def test_half_close_preserves_large_response_and_byte_order(self):
-        payload = bytes(range(256)) * 2048 + b'odd-tail'
-        response = bytes(reversed(range(256))) * 1024 + hashlib.sha256(payload).digest()
+        payload = hashlib.shake_256(b'half-close-upload').digest(524291)
+        response = hashlib.shake_256(b'half-close-response').digest(262151)
         def handle(s):
             self.assertEqual(receive_all(s), payload)
             for offset in range(0, len(response), 997):
@@ -38,8 +48,8 @@ class ProductionProxyTests(unittest.TestCase):
         self.assertTrue(b.errors.empty(), list(b.errors.queue))
 
     def test_simultaneous_bidirectional_streams(self):
-        payload = bytes(range(251)) * 4000
-        response = b'other-direction' * 70000
+        payload = hashlib.shake_256(b'duplex-upload').digest(1004003)
+        response = hashlib.shake_256(b'duplex-download').digest(1050007)
         def handle(s):
             errors = []
             def send():
@@ -76,9 +86,13 @@ class ProductionProxyTests(unittest.TestCase):
     def test_slow_consumer_backpressure_and_other_tenant_progress(self):
         release = threading.Event()
         self.addCleanup(release.set)
+        data = hashlib.shake_256(b'slow-upload').digest(1024*1024+3)
         def slow(s):
+            s.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, 16384)
             release.wait(5)
-            receive_all(s)
+            actual = receive_all(s)
+            self.assertEqual(actual, data)
+            s.sendall(hashlib.sha256(actual).digest())
         b = self.backend(slow)
         fast = self.backend(lambda s: s.sendall(receive_all(s)))
         tenants = [dict(name='slow', listen='127.0.0.1:0', backend=b.address, weight=1),
@@ -86,15 +100,17 @@ class ProductionProxyTests(unittest.TestCase):
         p = self.proxy(b, tenants=tenants)
         s = p.connect()
         self.addCleanup(s.close)
-        done = threading.Event()
+        s.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 16384)
+        sent = threading.Event()
+        errors = []
         def push():
             try:
-                s.sendall(b'x' * (16*1024*1024))
+                s.sendall(data)
+                sent.set()
                 s.shutdown(socket.SHUT_WR)
-            except OSError:
-                pass
-            finally:
-                done.set()
+                self.assertEqual(receive_all(s), hashlib.sha256(data).digest())
+            except BaseException as error:
+                errors.append(repr(error))
         t = threading.Thread(target=push)
         t.start()
         wait_for(lambda: p.metrics()['paused_reads'] > 0)
@@ -106,9 +122,13 @@ class ProductionProxyTests(unittest.TestCase):
         self.assertLessEqual(m['peak_queued_bytes'], m['reserved_payload_bytes'])
         self.assertLessEqual(m['tenants'][0]['peak_queued_bytes'], 2*p.config['buffer_bytes'])
         release.set()
-        self.assertTrue(done.wait(5))
-        t.join(2)
+        t.join(12)
         self.assertFalse(t.is_alive())
+        self.assertEqual(errors, [])
+        self.assertTrue(sent.is_set())
+        self.assertTrue(b.errors.empty(),list(b.errors.queue))
+        wait_for(lambda: p.metrics()['completed']==2)
+        self.assertEqual(p.metrics()['discarded'],[0,0])
 
     def test_per_tenant_and_global_overload_reject_without_backend_work(self):
         release = threading.Event()
@@ -203,7 +223,7 @@ class ProductionProxyTests(unittest.TestCase):
         self.assertEqual(p.metrics()['current_connections'], 0)
 
     def test_rate_budget_counts_successful_writes(self):
-        data = b'budget' * 21845 + b'!!'
+        data = hashlib.shake_256(b'budget').digest(131072)
         b = self.backend(lambda s: s.sendall(hashlib.sha256(receive_all(s)).digest()))
         p = self.proxy(b, rate_bytes_per_sec=32768, burst_bytes=4096)
         started = time.monotonic()
@@ -235,6 +255,7 @@ class ProductionProxyTests(unittest.TestCase):
 
     def test_reset_does_not_kill_proxy(self):
         b = self.backend(lambda s: s.sendall(receive_all(s)))
+        b.allow_peer_errors = True  # This peer is intentionally reset mid-stream.
         p = self.proxy(b)
         s = p.connect()
         s.sendall(b'x' * 100000)

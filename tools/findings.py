@@ -11,9 +11,9 @@ def findings(r):
     lines=['<!-- measured:start -->', '## Measured results', '',
            'Native macOS ARM64 loopback; 3 randomized paired blocks, 24 trials. Each trial',
            'completes the same five 512 KiB flows, scheduled at 0/5/10/15/20 ms, with a',
-           '512 KiB/s global cap in each direction and a 4 KiB burst. Tenant A has one',
+           '512 KiB/s global cap in each direction and a 4 KiB burst (schema 2). Tenant A has one',
            'connection; B has four. Fairness uses receiver bytes during 0.4–1.4 seconds.',
-           'Every trial is retained. Ranges below are observed min–max, not confidence intervals.', '',
+           'Every trial is retained against an explicit plan and compiled-source identity. Ranges below are observed min–max, not confidence intervals.', '',
            '| Direction | A:B weight | Mode | A share %, median [range] | Weighted Jain, median | Throughput MiB/s, median | Proxy peak RSS MiB, median |',
            '|---|---|---|---:|---:|---:|---:|']
     for d in ['upload','download']:
@@ -25,7 +25,8 @@ def findings(r):
                 lines.append(f'| {d} | {w[0]}:{w[1]} | {m} | {statistics.median(shares):.1f} [{min(shares):.1f}, {max(shares):.1f}] | {median("weighted_jain"):.3f} | {median("throughput_mib_s"):.3f} | {median("peak_sampled_proxy_rss_bytes")/1048576:.2f} |')
     active=sum(t['fairness_window_all_flows_active'] for t in r['trials'])
     lag=max(t['max_issue_lag_s'] for t in r['trials'])
-    lines += ['',f'All-flow-active windows: **{active}/{len(r["trials"])}**. Maximum measured issue lag: **{lag*1000:.2f} ms**.',
+    gap=max(t['max_sample_gap_s'] for t in r['trials'])
+    lines += ['',f'All-flow-active windows: **{active}/{len(r["trials"])}**. Maximum measured issue lag: **{lag*1000:.2f} ms**. Maximum RSS sample gap: **{gap*1000:.2f} ms**.',
               '', 'This is a fairness trade-off under an intentionally shaped local bottleneck,',
               'not an unshaped throughput result or a speedup over NGINX/Envoy/HAProxy.',
               'Peak RSS is sampled for the proxy process only; kernel socket buffers and',

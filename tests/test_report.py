@@ -24,6 +24,28 @@ class RetainedReportTests(unittest.TestCase):
         report['trials']=report['trials'][2:]
         with self.assertRaises(AssertionError):verify(report)
 
+    def test_reject_whole_block_removal_and_reordered_trials(self):
+        report=copy.deepcopy(self.report);report['trials']=report['trials'][:8]
+        with self.assertRaises(AssertionError):verify(report)
+        report=copy.deepcopy(self.report);report['trials'].reverse()
+        with self.assertRaises(AssertionError):verify(report)
+
+    def test_reject_empty_vectors_and_runtime_config_mismatch(self):
+        for field in ['receiver_window_shares','target_shares','flow_completion_s']:
+            report=copy.deepcopy(self.report);report['trials'][0][field]=[]
+            with self.subTest(field=field),self.assertRaises(AssertionError):verify(report)
+        report=copy.deepcopy(self.report);report['trials'][0]['actual_config']['burst_bytes']*=2
+        with self.assertRaises(AssertionError):verify(report)
+
+    def test_reject_missing_samples_outcome_and_byte_accounting(self):
+        for kind in ['last-sample','received','accepted','binary']:
+            report=copy.deepcopy(self.report);t=report['trials'][0]
+            if kind=='last-sample':t['proxy_samples']=t['proxy_samples'][:10]
+            elif kind=='received':t['proxy_metrics']['received'][0]+=1
+            elif kind=='accepted':t['proxy_metrics']['accepted']+=1
+            else:t['binary_sha256']='0'*64
+            with self.subTest(kind=kind),self.assertRaises(AssertionError):verify(report)
+
     def test_reject_forged_fairness_latency_rss_and_payload(self):
         for field in ['weighted_jain','elapsed_s','peak_sampled_proxy_rss_bytes']:
             report=copy.deepcopy(self.report)

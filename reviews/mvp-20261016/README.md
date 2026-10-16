@@ -37,3 +37,13 @@ GitHub account billing/spending restrictions. Its annotation and URL are in the
 receipt; no hosted test success is claimed. Native measurements are not virtual-machine
 memory or Linux performance observations.
 Project licensing remains unselected; third-party licenses are listed separately.
+
+## Historical scope after scheduling review
+
+This receipt and its logs describe the original MVP at `11d0923`; they are not
+relabelled as validation of the reviewed implementation. The original measurement
+JSON/HTML are preserved byte-for-byte under
+[`results/historical-mvp-11d0923`](../../results/historical-mvp-11d0923/).
+The [scheduling review](../scheduling-review-20261016/README.md) documents a staging-
+buffer fairness bug and validator gaps, fixes and new schema-2 observations.
+Use the root README for current results and limitations.

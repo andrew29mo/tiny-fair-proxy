@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "11d0923456a7752dc622c4934ef93da64b417105",
+  "source_files": {
+    "Cargo.lock": "a578d9a57695a8dd5629c7b6d67a9ae7a6ffe8559e2a1796914a9f4b6b5c4309",
+    "Cargo.toml": "059ee9b7d8ef847a94d7ecbae120059bbdaef3ebf766b30cf530fbba33682302",
+    "build.rs": "857e7750a306e2ce78a6ea3921bb9cfe7dcd8230fa31475f872526cf48f3742c",
+    "requirements-dev.txt": "b6c8d86768d07e1dae4fb734c2e93997445a318d43290b307bfc1c800a0b1e52",
+    "src/main.rs": "427a421686623e019ea5f7b50e7ca63a73c7b522047bb5d74bd08c38d7969a64",
+    "tests/support.py": "ffb89aada3e1ad43bad8f84255da18f25a1d642eddb0a8e06061a7fc7dc31afd",
+    "tests/test_fairness.py": "9d67c334da0fa543f5f73a940b041eb190e7698412ae38dcbf83458e5acdfb17",
+    "tests/test_proxy.py": "55f53d88a9d367acf9a3241b6a2edafdff2cc28a1bed6c9897e84b2455fa4330",
+    "tests/test_report.py": "cacccefd2a7a356bc91a0ea91226696eea39f5385d522eea2ea1d01ca1e8b944",
+    "tests/test_review_regressions.py": "07173bdfb00f59204c00a44f5136412bace8b651a15ced6698bdc2e58c825ae5",
+    "tools/benchmark.py": "eccd2375ab4058d2d65675b0af976c78bf5abc642e24024ed186f2e8b17f028c",
+    "tools/check_report.py": "7eb9954d34e44e6c79a27c20ccde3a1ca32c66fd784acb449345dc696b7a9c99",
+    "tools/findings.py": "90c618adbfcb65857a472a32e434fa24ce41dd8b6ba64d7c8e843a3bb8a0862a",
+    "tools/mutation_check.py": "fead8e9137e7591762824fc4e00376b0df3440c1b3a909d6a08884707e1f5515",
+    "tools/publication_check.py": "65b2afcc28ebf512e77654deb9900f8ec0c69cc2ba53effb735136bfb3b35a28"
+  },
+  "native": {
+    "status": "passed",
+    "environment": {
+      "label": "Native macOS ARM64 / reviewed schema 2 / loopback",
+      "os": "Darwin",
+      "machine": "arm64",
+      "python": "3.12.14",
+      "psutil": "7.0.0",
+      "os_release": "27.0.0",
+      "macos": "27.0.1",
+      "logical_cpus": 15
+    },
+    "rust_unit_tests": 4,
+    "python_test_methods": 33,
+    "live_fairness_subcases": 4,
+    "binary_identity": {
+      "files": {
+        "Cargo.lock": "a578d9a57695a8dd5629c7b6d67a9ae7a6ffe8559e2a1796914a9f4b6b5c4309",
+        "Cargo.toml": "059ee9b7d8ef847a94d7ecbae120059bbdaef3ebf766b30cf530fbba33682302",
+        "build.rs": "857e7750a306e2ce78a6ea3921bb9cfe7dcd8230fa31475f872526cf48f3742c",
+        "src/main.rs": "427a421686623e019ea5f7b50e7ca63a73c7b522047bb5d74bd08c38d7969a64"
+      },
+      "profile": "release",
+      "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+      "schema_version": 1,
+      "target": "aarch64-apple-darwin"
+    },
+    "binary_sha256": "f9e576cb46ba53cb1c4b23d7aa821911d467eabf228c07f6c3e6b16afa25464a",
+    "measurement_trials": 24,
+    "colima_during_measurement": "Stopped",
+    "other_heavy_validation_during_measurement": false
+  },
+  "linux": {
+    "status": "passed",
+    "environment": {
+      "os": "Linux",
+      "kernel": "6.8.0-117-generic",
+      "machine": "aarch64",
+      "python": "3.11.2",
+      "psutil": "7.0.0",
+      "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+      "source_files": {
+        "Cargo.lock": "a578d9a57695a8dd5629c7b6d67a9ae7a6ffe8559e2a1796914a9f4b6b5c4309",
+        "Cargo.toml": "059ee9b7d8ef847a94d7ecbae120059bbdaef3ebf766b30cf530fbba33682302",
+        "build.rs": "857e7750a306e2ce78a6ea3921bb9cfe7dcd8230fa31475f872526cf48f3742c",
+        "requirements-dev.txt": "b6c8d86768d07e1dae4fb734c2e93997445a318d43290b307bfc1c800a0b1e52",
+        "src/main.rs": "427a421686623e019ea5f7b50e7ca63a73c7b522047bb5d74bd08c38d7969a64",
+        "tests/support.py": "ffb89aada3e1ad43bad8f84255da18f25a1d642eddb0a8e06061a7fc7dc31afd",
+        "tests/test_fairness.py": "9d67c334da0fa543f5f73a940b041eb190e7698412ae38dcbf83458e5acdfb17",
+        "tests/test_proxy.py": "55f53d88a9d367acf9a3241b6a2edafdff2cc28a1bed6c9897e84b2455fa4330",
+        "tests/test_report.py": "cacccefd2a7a356bc91a0ea91226696eea39f5385d522eea2ea1d01ca1e8b944",
+        "tests/test_review_regressions.py": "07173bdfb00f59204c00a44f5136412bace8b651a15ced6698bdc2e58c825ae5",
+        "tools/benchmark.py": "eccd2375ab4058d2d65675b0af976c78bf5abc642e24024ed186f2e8b17f028c",
+        "tools/check_report.py": "7eb9954d34e44e6c79a27c20ccde3a1ca32c66fd784acb449345dc696b7a9c99",
+        "tools/findings.py": "90c618adbfcb65857a472a32e434fa24ce41dd8b6ba64d7c8e843a3bb8a0862a",
+        "tools/mutation_check.py": "fead8e9137e7591762824fc4e00376b0df3440c1b3a909d6a08884707e1f5515",
+        "tools/publication_check.py": "65b2afcc28ebf512e77654deb9900f8ec0c69cc2ba53effb735136bfb3b35a28"
+      },
+      "binary_sha256": "7a7783d1a2b6e6b1648bc2311910d9b5ba30e33c35671d2893da78c26a0dfab9"
+    },
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-16T03:55:38.813522807Z",
+      "FinishedAt": "2026-10-16T03:56:27.955840834Z"
+    },
+    "image": "sha256:3b71092767238e21825eb1a0d1b8ec873bd5cd94dec14aaf4beb315aab3f240f",
+    "config": {
+      "user": "validator",
+      "network": "none",
+      "memory": 536870912,
+      "nano_cpus": 2000000000,
+      "read_only_root": true,
+      "pids_limit": 128
+    },
+    "python_test_methods": 33,
+    "live_fairness_subcases": 4,
+    "container_removed": true,
+    "rust_unit_tests": 4,
+    "vm_final_status": "Stopped",
+    "performance_measurement": false
+  },
+  "commands": [
+    {
+      "command": "PYTHON=.venv/bin/python ./tools/validate",
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/python tools/benchmark.py --output results/native-macos-arm64 --blocks 3 --label <native-label>",
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/python tools/check_report.py results/native-macos-arm64",
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/python tools/mutation_check.py",
+      "exit_code": 0
+    },
+    {
+      "command": "docker build -f Dockerfile.validation -t tiny-fair-proxy-validation:review-20261016 .",
+      "exit_code": 0
+    },
+    {
+      "command": "docker run <isolated-non-root-container> python -m unittest discover -s tests -v",
+      "exit_code": 0
+    }
+  ],
+  "mutations": [
+    {
+      "fault": "premature_half_close",
+      "result": "behavioral-test-failed-as-required",
+      "test_file": "test_proxy.py"
+    },
+    {
+      "fault": "ignore_tenant_weights",
+      "result": "behavioral-test-failed-as-required",
+      "test_file": "test_fairness.py"
+    },
+    {
+      "fault": "discard_visit_at_empty_staging_buffer",
+      "result": "behavioral-test-failed-as-required",
+      "test_file": "test_review_regressions.ReviewRegressions.test_small_buffer_large_quantum_preserves_weight_both_directions"
+    },
+    {
+      "fault": "do_not_charge_tokens",
+      "result": "behavioral-test-failed-as-required",
+      "test_file": "test_proxy.py"
+    }
+  ],
+  "remote_ci_baseline": {
+    "observed_commit": "11d0923456a7752dc622c4934ef93da64b417105",
+    "run_url": "https://github.com/andrew29mo/tiny-fair-proxy/actions/runs/38844442599",
+    "jobs": [
+      {
+        "name": "test (ubuntu-latest)",
+        "conclusion": "failure",
+        "executed_steps": 0,
+        "annotations": [
+          "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+          "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\""
+        ]
+      },
+      {
+        "name": "test (macos-latest)",
+        "conclusion": "failure",
+        "executed_steps": 0,
+        "annotations": [
+          "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+          "Due to capacity constraints, jobs targeting macOS arm64 runners may experience longer queue times."
+        ]
+      }
+    ]
+  },
+  "report_sha256": {
+    "report.json": "3903de3c4173a3e01cbb39bab135360b68f23c43594813e5fd9a3fbf741ecc6c",
+    "report.html": "54f5e9d8373861f0a12e2e175d5c2df765e8abdba31e15f615708054c4425e51"
+  },
+  "logs_sha256": {
+    "native-tests.txt": "a2ab15b37ebd0aaec219f97d18492ef881d11e8014ad47e7e3f8e9c23d1b5190",
+    "measurement-run.txt": "965869f487ea31fa645a19be43b736abc92b58e3c89388a84f0679511a876400",
+    "mutation-summary.txt": "285e8497da57201203bac27ffcd7488cdf926b2668b322d2779f51205b4d84f2",
+    "mutation-premature_half_close.txt": "9f4043adb2cf9bb723090285d179801c9d81035dff02ec951b5d83f1e59abed9",
+    "mutation-ignore_tenant_weights.txt": "1eb4da254554eeb780bf9cf5fc468db8a620ce2f868921279b56cf60daf45275",
+    "mutation-discard_visit_at_empty_staging_buffer.txt": "8142f8386cb37991102d2e7d6da576e218829a00f59d543d7331215f07ff89ae",
+    "mutation-do_not_charge_tokens.txt": "456437f00b8c4ee955649143eb65150a9e8f96f4fd548b97b21fe0b99ecec450",
+    "linux-tests.txt": "7937dd635833019ed4d5fde38dfe13f6453c83db0374f42a2932ea96b6b3d286",
+    "linux-rust-tests.txt": "ff6f4397330922b4c3b57c6a09d44348add730e827bfb0b8b64581329eba7586"
+  },
+  "original_log_sha256": {
+    "native-tests.txt": "a2ab15b37ebd0aaec219f97d18492ef881d11e8014ad47e7e3f8e9c23d1b5190",
+    "measurement-run.txt": "965869f487ea31fa645a19be43b736abc92b58e3c89388a84f0679511a876400",
+    "mutation-summary.txt": "285e8497da57201203bac27ffcd7488cdf926b2668b322d2779f51205b4d84f2",
+    "mutation-premature_half_close.txt": "d2ae966350b65f3805cdd4a319240c4c711a430cb204f99e890ac5a1da2c83a6",
+    "mutation-ignore_tenant_weights.txt": "7f06c7da888c6543873dd48a01734f370160493cc2adc87362f1952f98fd133d",
+    "mutation-discard_visit_at_empty_staging_buffer.txt": "4c93dc454040dcf0e217126a169983e9df3545d80f4bf26366d37d9d68b417f1",
+    "mutation-do_not_charge_tokens.txt": "e91f57ad90818c8df079d3ef248811dc315fd65dfea645f724b35596b733415a",
+    "linux-tests.txt": "7937dd635833019ed4d5fde38dfe13f6453c83db0374f42a2932ea96b6b3d286",
+    "linux-rust-tests.txt": "c26449740368490b480c229baf895197e83f8d0c13d854b6ca31c3a09995ba37"
+  },
+  "log_normalization": "Repository/home prefixes replaced with placeholders and trailing whitespace stripped; original logs remain local. Linux build log contains only extracted Rust test lines.",
+  "limits": [
+    "Native loopback shaped traffic, three blocks; no Internet/line-rate/third-party claims.",
+    "Same planned worker start schedule and data; actual wire arrivals may differ.",
+    "Sampled proxy process RSS excludes kernel, peers and VM; peaks may be missed.",
+    "Linux container is correctness-only, not native Linux performance.",
+    "Source identity is consistency checking, not malicious-producer attestation.",
+    "Connect deadline unit ages the real production supervisor; no physical packet-loss experiment."
+  ]
+}

@@ -11,8 +11,9 @@ run `tools/check_report.py`, then `tools/findings.py` and all tests. Preserve al
 trials, failures and environment distinctions. Do not introduce a speed gate or
 filter out unfavorable pairs. Formal measurement runs should execute alone.
 
-`tools/mutation_check.py` compiles three deliberate protocol/scheduling faults and
-requires behavioral assertion failures. It uses a project `.venv` and ignored
+`tools/mutation_check.py` compiles four deliberate protocol/scheduling faults and
+requires behavioral assertion failures. Fault builds explicitly bypass source-identity
+matching so a hash mismatch cannot count as behavioral detection. It uses a project `.venv` and ignored
 `results/local/` build/log directories. Those expected-failure logs are separate
 from a normal release validation result.
 
