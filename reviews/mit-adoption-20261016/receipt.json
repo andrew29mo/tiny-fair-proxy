@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "7fe360973de79a0bd31806c69e58184269695c18",
+  "project_license": "MIT",
+  "copyright": "2026 Andrew Yuan",
+  "cargo_publish": false,
+  "runtime_python_tests_tools_and_lockfile_unchanged": true,
+  "source_files": {
+    "Cargo.lock": "a578d9a57695a8dd5629c7b6d67a9ae7a6ffe8559e2a1796914a9f4b6b5c4309",
+    "Cargo.toml": "4404570dc12667394cb5bad4c83da9128e0fce507ceac860a58fac63054d0c53",
+    "build.rs": "857e7750a306e2ce78a6ea3921bb9cfe7dcd8230fa31475f872526cf48f3742c",
+    "requirements-dev.txt": "b6c8d86768d07e1dae4fb734c2e93997445a318d43290b307bfc1c800a0b1e52",
+    "src/main.rs": "427a421686623e019ea5f7b50e7ca63a73c7b522047bb5d74bd08c38d7969a64",
+    "tests/support.py": "ffb89aada3e1ad43bad8f84255da18f25a1d642eddb0a8e06061a7fc7dc31afd",
+    "tests/test_fairness.py": "9d67c334da0fa543f5f73a940b041eb190e7698412ae38dcbf83458e5acdfb17",
+    "tests/test_proxy.py": "55f53d88a9d367acf9a3241b6a2edafdff2cc28a1bed6c9897e84b2455fa4330",
+    "tests/test_report.py": "cacccefd2a7a356bc91a0ea91226696eea39f5385d522eea2ea1d01ca1e8b944",
+    "tests/test_review_regressions.py": "7d2eb9a7c10086a3f174109771a0a3ed52fb3391b57bffc893b5ce9b4517809d",
+    "tools/benchmark.py": "69f875cf57e2edf16f8dbf811a4a85bd2dd07f74e92a133e5061b5b6b3647342",
+    "tools/check_report.py": "7eb9954d34e44e6c79a27c20ccde3a1ca32c66fd784acb449345dc696b7a9c99",
+    "tools/findings.py": "90c618adbfcb65857a472a32e434fa24ce41dd8b6ba64d7c8e843a3bb8a0862a",
+    "tools/mutation_check.py": "fead8e9137e7591762824fc4e00376b0df3440c1b3a909d6a08884707e1f5515",
+    "tools/publication_check.py": "65b2afcc28ebf512e77654deb9900f8ec0c69cc2ba53effb735136bfb3b35a28"
+  },
+  "additional_files_sha256": {
+    "LICENSE": "0a5f48c5847660a83b6372cf47ef20c88bc20a0ae051dcc623707d081d8ad504",
+    "THIRD_PARTY_NOTICES.md": "2394b6be5e559947c376fbef6ffa7c3b6a9a668c9018fdf0b74d127097220823",
+    "THIRD_PARTY_LICENSES.txt": "436c2e6ee46a88dc5d6523122dc65013fa0910aca6c7565c86821755d5e2925f",
+    "docs/DEPENDENCIES.md": "eba2e3bc1ba8f3ee17b48b45512426d55d1323f59548e0ff674525590ec0d7c2",
+    "README.md": "2456fa63272cde1fd771975f51435eccb8334ba2506982486a426cb1b49c5216",
+    "CONTRIBUTING.md": "1be0d064328a6fdbb353924a8e4f77d2ca5dddbe55c4e31abb18d91361a7c190",
+    "Dockerfile.validation": "942266267dff532ffdd5cf2fed162dc07cee3d886484f1a50023bcbf78f15a33",
+    ".github/workflows/ci.yml": "482a0ada1376e8589a08a87fbc6a4cc7212367f4333a27fff7d0b7078a8fe78b",
+    "rust-toolchain.toml": "ca67e66659a82661386e5a08471c913cb8b3f7c7ce37592207d3f513589a41c2"
+  },
+  "license_inventory_sha256": "53aa7e9a08c7ae7cbbfac85a713e7722440cb9f4bb49a3c5b4a8d7352f0e9cb1",
+  "license_text_entries": 29,
+  "all_license_inventory_hashes_checked": true,
+  "native": {
+    "status": "passed",
+    "environment": {
+      "label": "Native macOS ARM64 / MIT adoption / loopback",
+      "os": "Darwin",
+      "machine": "arm64",
+      "python": "3.12.14",
+      "psutil": "7.0.0",
+      "os_release": "27.0.0",
+      "macos": "27.0.1",
+      "logical_cpus": 15
+    },
+    "binary_identity": {
+      "files": {
+        "Cargo.lock": "a578d9a57695a8dd5629c7b6d67a9ae7a6ffe8559e2a1796914a9f4b6b5c4309",
+        "Cargo.toml": "4404570dc12667394cb5bad4c83da9128e0fce507ceac860a58fac63054d0c53",
+        "build.rs": "857e7750a306e2ce78a6ea3921bb9cfe7dcd8230fa31475f872526cf48f3742c",
+        "src/main.rs": "427a421686623e019ea5f7b50e7ca63a73c7b522047bb5d74bd08c38d7969a64"
+      },
+      "profile": "release",
+      "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+      "schema_version": 1,
+      "target": "aarch64-apple-darwin"
+    },
+    "binary_sha256": "6eed7ab82cd260381cbb30150fed47facb129642a35ca43d65d3d91c4cba144c",
+    "rust_unit_tests": 4,
+    "python_test_methods": 33,
+    "measurement_trials": 24,
+    "vm_during_measurement": "Stopped",
+    "concurrent_heavy_tests_during_measurement": false
+  },
+  "linux": {
+    "status": "passed",
+    "environment": {
+      "os": "Linux",
+      "kernel": "6.8.0-117-generic",
+      "machine": "aarch64",
+      "python": "3.11.2",
+      "psutil": "7.0.0",
+      "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+      "source_files": {
+        "Cargo.lock": "a578d9a57695a8dd5629c7b6d67a9ae7a6ffe8559e2a1796914a9f4b6b5c4309",
+        "Cargo.toml": "4404570dc12667394cb5bad4c83da9128e0fce507ceac860a58fac63054d0c53",
+        "build.rs": "857e7750a306e2ce78a6ea3921bb9cfe7dcd8230fa31475f872526cf48f3742c",
+        "requirements-dev.txt": "b6c8d86768d07e1dae4fb734c2e93997445a318d43290b307bfc1c800a0b1e52",
+        "src/main.rs": "427a421686623e019ea5f7b50e7ca63a73c7b522047bb5d74bd08c38d7969a64",
+        "tests/support.py": "ffb89aada3e1ad43bad8f84255da18f25a1d642eddb0a8e06061a7fc7dc31afd",
+        "tests/test_fairness.py": "9d67c334da0fa543f5f73a940b041eb190e7698412ae38dcbf83458e5acdfb17",
+        "tests/test_proxy.py": "55f53d88a9d367acf9a3241b6a2edafdff2cc28a1bed6c9897e84b2455fa4330",
+        "tests/test_report.py": "cacccefd2a7a356bc91a0ea91226696eea39f5385d522eea2ea1d01ca1e8b944",
+        "tests/test_review_regressions.py": "7d2eb9a7c10086a3f174109771a0a3ed52fb3391b57bffc893b5ce9b4517809d",
+        "tools/benchmark.py": "69f875cf57e2edf16f8dbf811a4a85bd2dd07f74e92a133e5061b5b6b3647342",
+        "tools/check_report.py": "7eb9954d34e44e6c79a27c20ccde3a1ca32c66fd784acb449345dc696b7a9c99",
+        "tools/findings.py": "90c618adbfcb65857a472a32e434fa24ce41dd8b6ba64d7c8e843a3bb8a0862a",
+        "tools/mutation_check.py": "fead8e9137e7591762824fc4e00376b0df3440c1b3a909d6a08884707e1f5515",
+        "tools/publication_check.py": "65b2afcc28ebf512e77654deb9900f8ec0c69cc2ba53effb735136bfb3b35a28"
+      },
+      "binary_sha256": "56d5e685173e86a8e6483aa5bb09eec4806fad4abeb6e0779a0927238eeb9f45"
+    },
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-16T04:14:39.785380186Z",
+      "FinishedAt": "2026-10-16T04:15:28.556410943Z"
+    },
+    "image": "sha256:04733e45a4b1480bcb9693f3c1057d9f0cc11b038b3a21a8a9215d42f119a24f",
+    "config": {
+      "user": "validator",
+      "network": "none",
+      "memory": 536870912,
+      "nano_cpus": 2000000000,
+      "read_only_root": true,
+      "pids_limit": 128
+    },
+    "python_test_methods": 33,
+    "live_fairness_subcases": 4,
+    "container_removed": true,
+    "rust_unit_tests": 4,
+    "virtualized": true,
+    "performance_measurement": false,
+    "vm_final_status": "Stopped"
+  },
+  "report_sha256": {
+    "report.json": "a32ff6d5317c955937af328be44e4c418e3cc3052b62a2e9bae7fcb6d3d3d29d",
+    "report.html": "7a90a6737fed1888d395651abb645e9157e1994ba8bcc4e3b2ed402d7b605e6e"
+  },
+  "historical_reports": {
+    "historical-mvp-11d0923": {
+      "commit": "11d0923",
+      "sha256": {
+        "report.json": "d1c7b5fbea8b611d5d0e32ef05fbab8298f9aea601128079dabcf0913fadac6e",
+        "report.html": "4d718201c08b7f91dd303a8873cbc0a5f851506207ef05bb0cb03c866ce814ed"
+      },
+      "unchanged": true
+    },
+    "historical-review-8617ad0": {
+      "commit": "8617ad0",
+      "sha256": {
+        "report.json": "3903de3c4173a3e01cbb39bab135360b68f23c43594813e5fd9a3fbf741ecc6c",
+        "report.html": "54f5e9d8373861f0a12e2e175d5c2df765e8abdba31e15f615708054c4425e51"
+      },
+      "unchanged": true
+    },
+    "historical-prepublication-7fe3609": {
+      "commit": "7fe3609",
+      "sha256": {
+        "report.json": "82a8f06f7bbe0daaebcae9e451b4b7a0b01dfdb5bad099608bb7d891660e7fbd",
+        "report.html": "656e906e59d7a203a6ddab10f7d677787e2ffae43c557d65d7a16ec3a11f271c"
+      },
+      "unchanged": true
+    }
+  },
+  "logs_sha256": {
+    "native-tests.txt": "8f27fe9ebcb04a5b74465f6f7e62a6ac788691c869ee7076d1d02c54b7543933",
+    "linux-tests.txt": "d175f0ed8a3728c362c58e5375e6d1ed487f2858cbadb8a2b58f4e9da2c82bab",
+    "linux-rust-tests.txt": "bb1b3e2d6c6e4bc5fadf3696c05576838657c0beddab6971dc825f980e6b5cb1",
+    "benchmark.txt": "6a6b6011f79db68cf4d2bda9b3e4cf4c7547faeddcb5a7276dfcc3cc487eb4b6"
+  },
+  "original_log_sha256": {
+    "native-tests.txt": "2eb62ea17c96f8ccc5518ae75a2e34700c74148a12a954dbb1f93a2db4a3c4ac",
+    "linux-tests.txt": "d175f0ed8a3728c362c58e5375e6d1ed487f2858cbadb8a2b58f4e9da2c82bab",
+    "linux-rust-tests.txt": "de55f58b580327c1b03f49a0d6019e43adb1bc5031eaf8eca037f945fe160e3c",
+    "benchmark.txt": "6a6b6011f79db68cf4d2bda9b3e4cf4c7547faeddcb5a7276dfcc3cc487eb4b6"
+  },
+  "log_normalization": "Personal repository/home prefixes replaced and trailing whitespace stripped; original logs remain local.",
+  "mutation_tests_rerun": false,
+  "commands": [
+    {
+      "command": "PYTHON=.venv/bin/python ./tools/validate",
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/python tools/benchmark.py --output results/native-macos-arm64 --blocks 3 --label <native-label>",
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/python tools/check_report.py results/native-macos-arm64",
+      "exit_code": 0
+    },
+    {
+      "command": "docker build -f Dockerfile.validation -t tiny-fair-proxy-validation:mit-20261016 .",
+      "exit_code": 0
+    },
+    {
+      "command": "Docker image CMD: /opt/verify/bin/python -m unittest discover -s tests -v",
+      "exit_code": 0
+    },
+    {
+      "command": "Docker exec: compiled Rust unit executable from target/debug/deps",
+      "exit_code": 0
+    }
+  ]
+}

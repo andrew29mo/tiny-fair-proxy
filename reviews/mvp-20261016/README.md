@@ -1,5 +1,8 @@
 # MVP evidence — 2026-10-16
 
+Historical record: the later [MIT adoption](../mit-adoption-20261016/README.md)
+supersedes the unselected-license status recorded here.
+
 The native macOS ARM64 run uses the actual release binary and real loopback TCP
 peers. Three Rust unit tests and 18 Python test methods passed, including four
 live weighted-fairness subcases, exact byte/EOF checks, slow consumers, independently

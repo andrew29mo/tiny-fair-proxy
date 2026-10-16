@@ -1,0 +1,46 @@
+{"block": 0, "direction": "upload", "weights": [1, 1], "mode": "tenant_fair", "receiver_window_shares": [0.5, 0.5], "weighted_jain": 1.0, "fairness_window_all_flows_active": true}
+{"block": 0, "direction": "upload", "weights": [1, 1], "mode": "tenant_fair", "receiver_window_shares": [0.5, 0.5], "weighted_jain": 1.0, "fairness_window_all_flows_active": true}
+{"block": 0, "direction": "upload", "weights": [1, 1], "mode": "tenant_fair", "receiver_window_shares": [0.5, 0.5], "weighted_jain": 1.0, "fairness_window_all_flows_active": true}
+{"block": 0, "direction": "upload", "weights": [1, 1], "mode": "tenant_fair", "receiver_window_shares": [0.5, 0.5], "weighted_jain": 1.0, "fairness_window_all_flows_active": true}
+{"block": 0, "direction": "upload", "weights": [1, 1], "mode": "tenant_fair", "receiver_window_shares": [0.5, 0.5], "weighted_jain": 1.0, "fairness_window_all_flows_active": true}
+{"block": 0, "direction": "upload", "weights": [1, 1], "mode": "tenant_fair", "receiver_window_shares": [0.5, 0.5], "weighted_jain": 1.0, "fairness_window_all_flows_active": true}
+{"block": 0, "direction": "upload", "weights": [1, 1], "mode": "tenant_fair", "receiver_window_shares": [0.5, 0.5], "weighted_jain": 1.0, "fairness_window_all_flows_active": true}
+{"block": 0, "direction": "upload", "weights": [1, 1], "mode": "tenant_fair", "receiver_window_shares": [0.5, 0.5], "weighted_jain": 1.0, "fairness_window_all_flows_active": true}
+test_tenant_weight_and_connection_count_in_both_directions (test_fairness.LiveFairnessTests.test_tenant_weight_and_connection_count_in_both_directions) ... ok
+test_backend_refusal_cleans_connection (test_proxy.ProductionProxyTests.test_backend_refusal_cleans_connection) ... ok
+test_duplicate_state_directory_fails_without_removing_ready (test_proxy.ProductionProxyTests.test_duplicate_state_directory_fails_without_removing_ready) ... ok
+test_global_limit_independent_of_tenant_limit (test_proxy.ProductionProxyTests.test_global_limit_independent_of_tenant_limit) ... ok
+test_graceful_shutdown_drains_existing_half_closed_connection (test_proxy.ProductionProxyTests.test_graceful_shutdown_drains_existing_half_closed_connection) ... ok
+test_half_close_preserves_large_response_and_byte_order (test_proxy.ProductionProxyTests.test_half_close_preserves_large_response_and_byte_order) ... ok
+test_idle_timeout_returns_reserved_slot (test_proxy.ProductionProxyTests.test_idle_timeout_returns_reserved_slot) ... ok
+test_invalid_configuration_fails_closed (test_proxy.ProductionProxyTests.test_invalid_configuration_fails_closed) ... ok
+test_per_tenant_and_global_overload_reject_without_backend_work (test_proxy.ProductionProxyTests.test_per_tenant_and_global_overload_reject_without_backend_work) ... ok
+test_rate_budget_counts_successful_writes (test_proxy.ProductionProxyTests.test_rate_budget_counts_successful_writes) ... ok
+test_reset_does_not_kill_proxy (test_proxy.ProductionProxyTests.test_reset_does_not_kill_proxy) ... ok
+test_shutdown_deadline_forces_idle_connection (test_proxy.ProductionProxyTests.test_shutdown_deadline_forces_idle_connection) ... ok
+test_simultaneous_bidirectional_streams (test_proxy.ProductionProxyTests.test_simultaneous_bidirectional_streams) ... ok
+test_slow_consumer_backpressure_and_other_tenant_progress (test_proxy.ProductionProxyTests.test_slow_consumer_backpressure_and_other_tenant_progress) ... ok
+test_all_retained_trials_and_html (test_report.RetainedReportTests.test_all_retained_trials_and_html) ... ok
+test_reject_empty_vectors_and_runtime_config_mismatch (test_report.RetainedReportTests.test_reject_empty_vectors_and_runtime_config_mismatch) ... ok
+test_reject_forged_fairness_latency_rss_and_payload (test_report.RetainedReportTests.test_reject_forged_fairness_latency_rss_and_payload) ... ok
+test_reject_missing_samples_outcome_and_byte_accounting (test_report.RetainedReportTests.test_reject_missing_samples_outcome_and_byte_accounting) ... ok
+test_reject_selective_pair_removal (test_report.RetainedReportTests.test_reject_selective_pair_removal) ... ok
+test_reject_source_mismatch_and_dropped_receiver_bytes (test_report.RetainedReportTests.test_reject_source_mismatch_and_dropped_receiver_bytes) ... ok
+test_reject_whole_block_removal_and_reordered_trials (test_report.RetainedReportTests.test_reject_whole_block_removal_and_reordered_trials) ... ok
+test_nonzero_proxy_exit_is_not_silently_accepted (test_review_regressions.HarnessRegressions.test_nonzero_proxy_exit_is_not_silently_accepted) ... ok
+test_report_failure_overwrites_previous_success (test_review_regressions.HarnessRegressions.test_report_failure_overwrites_previous_success) ... ok
+test_reused_buffer_slots_do_not_repeat_previous_stream_bytes (test_review_regressions.HarnessRegressions.test_reused_buffer_slots_do_not_repeat_previous_stream_bytes) ... ok
+test_sampling_failure_prevents_successful_trial (test_review_regressions.HarnessRegressions.test_sampling_failure_prevents_successful_trial) ... ok
+test_backend_half_closes_first_while_upload_continues (test_review_regressions.ReviewRegressions.test_backend_half_closes_first_while_upload_continues) ... ok
+test_drain_with_queued_tail_is_delivered_and_accounted (test_review_regressions.ReviewRegressions.test_drain_with_queued_tail_is_delivered_and_accounted) ... ok
+test_forced_drain_accounts_queued_bytes_and_connection (test_review_regressions.ReviewRegressions.test_forced_drain_accounts_queued_bytes_and_connection) ... ok
+test_optimized_validation_is_refused (test_review_regressions.ReviewRegressions.test_optimized_validation_is_refused) ... ok
+test_receive_has_absolute_deadline_even_with_dribbling_peer (test_review_regressions.ReviewRegressions.test_receive_has_absolute_deadline_even_with_dribbling_peer) ... ok
+test_slow_download_does_not_block_other_tenant_and_recovers (test_review_regressions.ReviewRegressions.test_slow_download_does_not_block_other_tenant_and_recovers) ... ok
+test_small_buffer_large_quantum_preserves_weight_both_directions (test_review_regressions.ReviewRegressions.test_small_buffer_large_quantum_preserves_weight_both_directions) ... ok
+test_stale_source_identity_is_rejected (test_review_regressions.ReviewRegressions.test_stale_source_identity_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 48.583s
+
+OK

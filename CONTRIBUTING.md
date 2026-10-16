@@ -1,5 +1,9 @@
 # Development
 
+Original contributions use the project's [MIT License](LICENSE). Preserve
+third-party attribution and license terms; dependencies are listed separately
+in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
 Install Rust 1.99.1 and Python 3.12, create `.venv`, and install
 `requirements-dev.txt`. Run `PYTHON=.venv/bin/python ./tools/validate` to build and
 test the actual release executable. `cargo fmt --check` and

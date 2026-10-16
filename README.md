@@ -79,16 +79,16 @@ Every trial is retained against an explicit plan and compiled-source identity. R
 
 | Direction | A:B weight | Mode | A share %, median [range] | Weighted Jain, median | Throughput MiB/s, median | Proxy peak RSS MiB, median |
 |---|---|---|---:|---:|---:|---:|
-| upload | 1:1 | connection_rr | 20.4 [20.2, 20.4] | 0.740 | 0.424 | 2.55 |
-| upload | 1:1 | tenant_fair | 50.0 [50.0, 50.5] | 1.000 | 0.425 | 2.55 |
-| upload | 1:3 | connection_rr | 20.2 [20.2, 20.6] | 0.982 | 0.426 | 2.55 |
-| upload | 1:3 | tenant_fair | 25.0 [25.0, 25.7] | 1.000 | 0.424 | 2.55 |
-| download | 1:1 | connection_rr | 20.0 [20.0, 20.4] | 0.735 | 0.428 | 2.53 |
-| download | 1:1 | tenant_fair | 50.0 [49.5, 50.5] | 1.000 | 0.428 | 2.55 |
-| download | 1:3 | connection_rr | 20.0 [19.8, 20.2] | 0.980 | 0.429 | 2.53 |
-| download | 1:3 | tenant_fair | 25.5 [25.5, 25.5] | 1.000 | 0.429 | 2.53 |
+| upload | 1:1 | connection_rr | 20.2 [20.0, 20.4] | 0.738 | 0.424 | 2.52 |
+| upload | 1:1 | tenant_fair | 50.5 [50.0, 50.5] | 1.000 | 0.425 | 2.52 |
+| upload | 1:3 | connection_rr | 20.4 [20.4, 20.4] | 0.983 | 0.423 | 2.52 |
+| upload | 1:3 | tenant_fair | 25.5 [25.0, 25.5] | 1.000 | 0.425 | 2.52 |
+| download | 1:1 | connection_rr | 20.2 [20.2, 20.2] | 0.738 | 0.429 | 2.52 |
+| download | 1:1 | tenant_fair | 50.0 [50.0, 50.5] | 1.000 | 0.430 | 2.53 |
+| download | 1:3 | connection_rr | 20.0 [20.0, 20.2] | 0.980 | 0.427 | 2.50 |
+| download | 1:3 | tenant_fair | 25.5 [25.0, 25.5] | 1.000 | 0.427 | 2.53 |
 
-All-flow-active windows: **24/24**. Maximum measured issue lag: **6.45 ms**. Maximum RSS sample gap: **19.19 ms**.
+All-flow-active windows: **24/24**. Maximum measured issue lag: **6.08 ms**. Maximum RSS sample gap: **16.11 ms**.
 
 This is a fairness trade-off under an intentionally shaped local bottleneck,
 not an unshaped throughput result or a speedup over NGINX/Envoy/HAProxy.
@@ -108,10 +108,11 @@ Native macOS ARM64 and a non-root Colima Linux ARM64 container each passed
 4 Rust unit tests and 33 Python test methods (including four live fairness
 subcases). Four compiled production faults were detected on macOS. Linux
 uses the same source manifest; its correctness run is separate from the native
-performance grid. See the [final pre-publication review and validation receipt](reviews/prepublication-20261016/README.md)
+performance grid. See the [MIT adoption and current validation receipt](reviews/mit-adoption-20261016/README.md)
 for current source/record consistency, platform reruns and file-history checks.
 The [original MVP](reviews/mvp-20261016/README.md) and
 [scheduling-review records](reviews/scheduling-review-20261016/README.md) are retained as historical evidence.
+The [pre-publication review](reviews/prepublication-20261016/README.md) predates MIT adoption.
 
 The [first hosted CI run](https://github.com/andrew29mo/tiny-fair-proxy/actions/runs/38844282524) was blocked before any steps
 by GitHub account billing/spending restrictions. Neither hosted job executed;
@@ -119,5 +120,9 @@ local validation above is not a claim of hosted CI success.
 
 ## Status and license
 
-Private MVP; no project open-source license selected. See
-[third-party notices](THIRD_PARTY_NOTICES.md) and [security scope](SECURITY.md).
+Private MVP, licensed under the [MIT License](LICENSE).
+Third-party dependencies retain their own terms; see
+[third-party notices](THIRD_PARTY_NOTICES.md), [license texts](THIRD_PARTY_LICENSES.txt)
+and [security scope](SECURITY.md). Licensing does not change repository visibility.
+The [MIT adoption record](reviews/mit-adoption-20261016/README.md) supersedes
+the license status recorded in earlier reviews.

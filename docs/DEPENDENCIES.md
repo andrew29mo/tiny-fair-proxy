@@ -2,6 +2,12 @@
 
 Generated from Cargo metadata for Cargo.lock. License expressions are upstream metadata, not a new project license. No sources are vendored.
 
+The project uses MIT. For the dependencies below, MIT is the selected option
+where offered, including legacy slash-separated alternatives. `unicode-ident`
+also requires Unicode-3.0. Exact selected license texts and original notices are
+in [THIRD_PARTY_LICENSES.txt](../THIRD_PARTY_LICENSES.txt); see
+[third-party notices](../THIRD_PARTY_NOTICES.md) for distribution scope.
+
 | Crate | Version | Upstream license expression |
 |---|---|---|
 | block-buffer | 0.10.4 | MIT OR Apache-2.0 |

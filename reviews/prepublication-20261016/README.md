@@ -1,5 +1,11 @@
 # Pre-publication review — 2026-10-16
 
+Historical record of commit `7fe3609`. The later
+[MIT adoption](../mit-adoption-20261016/README.md) supersedes the unselected-license
+status below; this receipt and its observations are retained unchanged.
+The unchanged report pair is in
+[`results/historical-prepublication-7fe3609`](../../results/historical-prepublication-7fe3609/).
+
 Baseline: `8617ad0e42de355079aeb6c6cb658c16c1a8d312`, initially clean.
 The repository remains Private with no added collaborators. No project license
 has been selected or granted by this review. A public/open-source release still

@@ -3,6 +3,7 @@ name = "tiny-fair-proxy"
 version = "0.1.0"
 edition = "2021"
 description = "Bounded TCP relay with tenant-weighted byte scheduling"
+license = "MIT"
 publish = false
 
 [dependencies]

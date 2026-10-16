@@ -1,0 +1,291 @@
+[
+  {
+    "component": "block-buffer",
+    "version": "0.10.4",
+    "upstream_license": "MIT OR Apache-2.0",
+    "selected_license": "MIT",
+    "upstream_file": "LICENSE-MIT",
+    "sha256": "d5c22aa3118d240e877ad41c5d9fa232f9c77d757d4aac0c2f943afc0a95e0ef",
+    "bundled_text_sha256": "d5c22aa3118d240e877ad41c5d9fa232f9c77d757d4aac0c2f943afc0a95e0ef",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "cfg-if",
+    "version": "1.0.5",
+    "upstream_license": "MIT OR Apache-2.0",
+    "selected_license": "MIT",
+    "upstream_file": "LICENSE-MIT",
+    "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+    "bundled_text_sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "cpufeatures",
+    "version": "0.2.17",
+    "upstream_license": "MIT OR Apache-2.0",
+    "selected_license": "MIT",
+    "upstream_file": "LICENSE-MIT",
+    "sha256": "ae9baa7beea910273c2f384c2a6b721fb7bd02bda3436074a1072e4ee689f985",
+    "bundled_text_sha256": "ae9baa7beea910273c2f384c2a6b721fb7bd02bda3436074a1072e4ee689f985",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "crypto-common",
+    "version": "0.1.7",
+    "upstream_license": "MIT OR Apache-2.0",
+    "selected_license": "MIT",
+    "upstream_file": "LICENSE-MIT",
+    "sha256": "3521672491a3479422d5fe1aca6645dd2984090f85da6e5205abfb18fb7a6897",
+    "bundled_text_sha256": "3521672491a3479422d5fe1aca6645dd2984090f85da6e5205abfb18fb7a6897",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "digest",
+    "version": "0.10.7",
+    "upstream_license": "MIT OR Apache-2.0",
+    "selected_license": "MIT",
+    "upstream_file": "LICENSE-MIT",
+    "sha256": "9e0dfd2dd4173a530e238cb6adb37aa78c34c6bc7444e0e10c1ab5d8881f63ba",
+    "bundled_text_sha256": "9e0dfd2dd4173a530e238cb6adb37aa78c34c6bc7444e0e10c1ab5d8881f63ba",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "errno",
+    "version": "0.3.14",
+    "upstream_license": "MIT OR Apache-2.0",
+    "selected_license": "MIT",
+    "upstream_file": "LICENSE-MIT",
+    "sha256": "8764a597675778ddfd4e25f81b08a05dbcf089ac05662df7613fe67f150e3aa2",
+    "bundled_text_sha256": "8764a597675778ddfd4e25f81b08a05dbcf089ac05662df7613fe67f150e3aa2",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "generic-array",
+    "version": "0.14.7",
+    "upstream_license": "MIT",
+    "selected_license": "MIT",
+    "upstream_file": "LICENSE",
+    "sha256": "c09aae9d3c77b531f56351a9947bc7446511d6b025b3255312d3e3442a9a7583",
+    "bundled_text_sha256": "ad4fcfaf8d5b12b97409c137a03d4a4e4b21024c65c54f976cc3b609c1bd5b0f",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "itoa",
+    "version": "1.0.18",
+    "upstream_license": "MIT OR Apache-2.0",
+    "selected_license": "MIT",
+    "upstream_file": "LICENSE-MIT",
+    "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "bundled_text_sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "libc",
+    "version": "0.2.190",
+    "upstream_license": "MIT OR Apache-2.0",
+    "selected_license": "MIT",
+    "upstream_file": "LICENSE-MIT",
+    "sha256": "123a331b5dbf04c30097fa43b8f858bc85df671fe776de498d01f3d6b7c1f69e",
+    "bundled_text_sha256": "123a331b5dbf04c30097fa43b8f858bc85df671fe776de498d01f3d6b7c1f69e",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "memchr",
+    "version": "2.8.3",
+    "upstream_license": "Unlicense OR MIT",
+    "selected_license": "MIT",
+    "upstream_file": "LICENSE-MIT",
+    "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f",
+    "bundled_text_sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "proc-macro2",
+    "version": "1.0.107",
+    "upstream_license": "MIT OR Apache-2.0",
+    "selected_license": "MIT",
+    "upstream_file": "LICENSE-MIT",
+    "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "bundled_text_sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "quote",
+    "version": "1.0.47",
+    "upstream_license": "MIT OR Apache-2.0",
+    "selected_license": "MIT",
+    "upstream_file": "LICENSE-MIT",
+    "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "bundled_text_sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "serde",
+    "version": "1.0.229",
+    "upstream_license": "MIT OR Apache-2.0",
+    "selected_license": "MIT",
+    "upstream_file": "LICENSE-MIT",
+    "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "bundled_text_sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "serde_core",
+    "version": "1.0.229",
+    "upstream_license": "MIT OR Apache-2.0",
+    "selected_license": "MIT",
+    "upstream_file": "LICENSE-MIT",
+    "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "bundled_text_sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "serde_derive",
+    "version": "1.0.229",
+    "upstream_license": "MIT OR Apache-2.0",
+    "selected_license": "MIT",
+    "upstream_file": "LICENSE-MIT",
+    "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "bundled_text_sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "serde_json",
+    "version": "1.0.154",
+    "upstream_license": "MIT OR Apache-2.0",
+    "selected_license": "MIT",
+    "upstream_file": "LICENSE-MIT",
+    "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "bundled_text_sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "sha2",
+    "version": "0.10.9",
+    "upstream_license": "MIT OR Apache-2.0",
+    "selected_license": "MIT",
+    "upstream_file": "LICENSE-MIT",
+    "sha256": "b4eb00df6e2a4d22518fcaa6a2b4646f249b3a3c9814509b22bd2091f1392ff1",
+    "bundled_text_sha256": "b4eb00df6e2a4d22518fcaa6a2b4646f249b3a3c9814509b22bd2091f1392ff1",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "signal-hook",
+    "version": "0.3.18",
+    "upstream_license": "Apache-2.0/MIT",
+    "selected_license": "MIT",
+    "upstream_file": "LICENSE-MIT",
+    "sha256": "503558bfefe66ca15e4e3f7955b3cb0ec87fd52f29bf24b336af7bd00e946d5c",
+    "bundled_text_sha256": "503558bfefe66ca15e4e3f7955b3cb0ec87fd52f29bf24b336af7bd00e946d5c",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "signal-hook-registry",
+    "version": "1.4.8",
+    "upstream_license": "MIT OR Apache-2.0",
+    "selected_license": "MIT",
+    "upstream_file": "LICENSE-MIT",
+    "sha256": "503558bfefe66ca15e4e3f7955b3cb0ec87fd52f29bf24b336af7bd00e946d5c",
+    "bundled_text_sha256": "503558bfefe66ca15e4e3f7955b3cb0ec87fd52f29bf24b336af7bd00e946d5c",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "socket2",
+    "version": "0.6.5",
+    "upstream_license": "MIT OR Apache-2.0",
+    "selected_license": "MIT",
+    "upstream_file": "LICENSE-MIT",
+    "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+    "bundled_text_sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "syn",
+    "version": "3.0.9",
+    "upstream_license": "MIT OR Apache-2.0",
+    "selected_license": "MIT",
+    "upstream_file": "LICENSE-MIT",
+    "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "bundled_text_sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "typenum",
+    "version": "1.20.1",
+    "upstream_license": "MIT OR Apache-2.0",
+    "selected_license": "MIT",
+    "upstream_file": "LICENSE-MIT",
+    "sha256": "a825bd853ab71619a4923d7b4311221427848070ff44d990da39b0b274c1683f",
+    "bundled_text_sha256": "a825bd853ab71619a4923d7b4311221427848070ff44d990da39b0b274c1683f",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "unicode-ident",
+    "version": "1.0.27",
+    "upstream_license": "(MIT OR Apache-2.0) AND Unicode-3.0",
+    "selected_license": "MIT",
+    "upstream_file": "LICENSE-MIT",
+    "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "bundled_text_sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "unicode-ident",
+    "version": "1.0.27",
+    "upstream_license": "(MIT OR Apache-2.0) AND Unicode-3.0",
+    "selected_license": "Unicode-3.0",
+    "upstream_file": "LICENSE-UNICODE",
+    "sha256": "f7db81051789b729fea528a63ec4c938fdcb93d9d61d97dc8cc2e9df6d47f2a1",
+    "bundled_text_sha256": "f7db81051789b729fea528a63ec4c938fdcb93d9d61d97dc8cc2e9df6d47f2a1",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "version_check",
+    "version": "0.9.5",
+    "upstream_license": "MIT/Apache-2.0",
+    "selected_license": "MIT",
+    "upstream_file": "LICENSE-MIT",
+    "sha256": "b7e650f3fce5c53249d1cdc608b54df156a97edd636cf9d23498d0cfe7aec63e",
+    "bundled_text_sha256": "b7e650f3fce5c53249d1cdc608b54df156a97edd636cf9d23498d0cfe7aec63e",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "windows-link",
+    "version": "0.2.1",
+    "upstream_license": "MIT OR Apache-2.0",
+    "selected_license": "MIT",
+    "upstream_file": "license-mit",
+    "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+    "bundled_text_sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "windows-sys",
+    "version": "0.61.2",
+    "upstream_license": "MIT OR Apache-2.0",
+    "selected_license": "MIT",
+    "upstream_file": "license-mit",
+    "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+    "bundled_text_sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "zmij",
+    "version": "1.0.23",
+    "upstream_license": "MIT",
+    "selected_license": "MIT",
+    "upstream_file": "LICENSE-MIT",
+    "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "bundled_text_sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  },
+  {
+    "component": "psutil",
+    "version": "7.0.0",
+    "selected_license": "BSD-3-Clause",
+    "upstream_file": "LICENSE",
+    "sha256": "b89c063b3786e28e0c0a38f1931db61fed35e69dd2a2966fbecffee0f46c8d10",
+    "bundled_text_sha256": "b89c063b3786e28e0c0a38f1931db61fed35e69dd2a2966fbecffee0f46c8d10",
+    "text_normalization": "CRLF/CR converted to LF; text and notices otherwise retained"
+  }
+]
